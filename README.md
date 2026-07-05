@@ -66,3 +66,5 @@ See [`wedding-site.md`](./wedding-site.md) for full project notes, including ent
 
 - The RSVP and Messages (guestbook) forms are currently **visual-only** — they display a confirmation but don't send or store data anywhere.
 - Photos are placeholder images and need to be swapped with real ones before launch.
+
+All rights reserved
