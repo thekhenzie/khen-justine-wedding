@@ -1,6 +1,6 @@
 # Khen & Tine Wedding Invitation — Project Notes
 
-Single self-contained file: **`wedding.html`** (HTML + CSS + JS inline, no build step, no dependencies). Open by double-click or deploy as-is.
+Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build step, no dependencies). Open by double-click or deploy as-is.
 
 ## Core details
 - Couple: **Khen & Tine**
@@ -53,9 +53,9 @@ Single self-contained file: **`wedding.html`** (HTML + CSS + JS inline, no build
 - Ceremony/reception exact street addresses not added (only venue names)
 
 ## Deployment
-- Currently deployed manually via **Netlify Drop** (drag-and-drop `wedding.html`, ideally renamed to `index.html` for a clean URL)
-- Re-deploy after any edit by dragging the updated file into the Netlify dashboard's Deploys tab
+- Deployed via **GitHub Pages**: https://thekhenzie.github.io/khen-justine-wedding/
+- Re-deploy by pushing changes to the `main` branch — GitHub Pages publishes `index.html` automatically
 - No custom domain set up yet
 
 ## How to resume work with minimal context
-Just point Claude at `C:\Users\harol\KhenAndTine-Wedding\wedding.html` and this `PLAN.md`. Everything editable is clearly commented in the HTML (easy-edit blocks, `WEDDING_DATE` constant, CSS variable palette at the top).
+Just point Claude at `index.html` and this file. Everything editable is clearly commented in the HTML (easy-edit blocks, `WEDDING_DATE` constant, CSS variable palette at the top).

@@ -7,7 +7,7 @@ A single-page wedding invitation website for **Khen & Tine's** wedding on **Febr
 Live site: https://thekhenzie.github.io/khen-justine-wedding/
 ## Overview
 
-This is a self-contained, static wedding invitation site — no build tools, no dependencies, no backend. Everything (HTML, CSS, and JavaScript) lives in one file: [`wedding-site.html`](./wedding-site.html).
+This is a self-contained, static wedding invitation site — no build tools, no dependencies, no backend. Everything (HTML, CSS, and JavaScript) lives in one file: [`index.html`](./index.html).
 
 ## Features
 
@@ -27,30 +27,31 @@ This is a self-contained, static wedding invitation site — no build tools, no 
 
 ## Getting Started
 
-No installation required. Simply open `wedding-site.html` in a browser:
+No installation required. Simply open `index.html` in a browser:
 
 ```bash
 # Windows
-start wedding-site.html
+start index.html
 
 # macOS
-open wedding-site.html
+open index.html
 
 # Linux
-xdg-open wedding-site.html
+xdg-open index.html
 ```
 
 ## Deployment
 
-The site is deployed via **GitHub Pages** at `/khen-justine-wedding`:
+The site is deployed via **GitHub Pages**: https://thekhenzie.github.io/khen-justine-wedding/
 
-1. Rename `wedding-site.html` to `index.html` (for a clean root URL)
-2. Push to the `main` branch (or whichever branch GitHub Pages is configured to serve from)
-3. GitHub Pages will automatically publish the updated file
+1. Push changes to the `main` branch (or whichever branch GitHub Pages is configured to serve from)
+2. GitHub Pages will automatically publish the updated `index.html`
+
+> If GitHub Pages isn't enabled yet: repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**, then select `main` / `(root)`.
 
 ## Editing
 
-All editable content — names, dates, venues, entourage, photos — is clearly marked with comment blocks inside `wedding-site.html`. Key spots:
+All editable content — names, dates, venues, entourage, photos — is clearly marked with comment blocks inside `index.html`. Key spots:
 
 | What | Where |
 |---|---|
