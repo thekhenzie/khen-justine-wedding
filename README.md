@@ -64,7 +64,7 @@ See [`wedding-site.md`](./wedding-site.md) for full project notes, including ent
 
 ## Notes
 
-- The RSVP and Messages (guestbook) forms are currently **visual-only** — they display a confirmation but don't send or store data anywhere.
+- The Messages (guestbook) and RSVP forms both save to **Firebase Firestore** — see `wedding-site.md` for setup steps, config, and the security rules needed for each collection.
 - Photos are placeholder images and need to be swapped with real ones before launch.
 
 All rights reserved
