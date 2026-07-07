@@ -1404,7 +1404,7 @@
   <audio id="bgm" loop preload="auto">
     <source src="assets/song.mp3" type="audio/mpeg" />
   </audio>
-  <button id="music-toggle" aria-label="Play music">&#128263;</button>
+  <button id="music-toggle" aria-label="Pause music"></button>
 
   <!-- ===================== NAV ===================== -->
   <nav id="nav">
@@ -1948,10 +1948,13 @@
     var musicBtn = document.getElementById('music-toggle');
     var userPaused = false;
 
+    var PLAY_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    var PAUSE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+
     function updateMusicBtn() {
-      musicBtn.innerHTML = bgm.paused ? '&#128263;' : '&#9834;';
+      musicBtn.innerHTML = bgm.paused ? PLAY_ICON : PAUSE_ICON;
       musicBtn.classList.toggle('playing', !bgm.paused);
-      musicBtn.setAttribute('aria-label', bgm.paused ? 'Play music' : 'Mute music');
+      musicBtn.setAttribute('aria-label', bgm.paused ? 'Play music' : 'Pause music');
     }
 
     function startOnFirstInteraction() {
