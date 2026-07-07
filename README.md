@@ -2,7 +2,7 @@
 
 A single-page wedding invitation website for **Khen & Tine's** wedding on **February 26, 2027**.
 
-🔗 `#KhenAndTine2027`
+🔗 `#DesTINEdForKHEN`
 
 Live site: https://thekhenzie.github.io/khen-justine-wedding/
 ## Overview

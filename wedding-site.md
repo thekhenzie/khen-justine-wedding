@@ -6,8 +6,8 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - Couple: **Khen & Tine**
 - Date: **February 26, 2027** (Friday) — set in JS as `WEDDING_DATE = new Date(2027, 1, 26, 14, 0, 0)` near the bottom of the file (month is 0-indexed: `1` = Feb)
 - Ceremony: Diocesan Shrine and Parish of Nuestra Señora de los Desamparados — 2:00 PM
-- Reception: Water Nymph Resort – Event Resort — 5:00 PM
-- Hashtag: `#KhenAndTine2027`
+- Reception: Water Nymph Resort – Event Resort — 4:00 PM
+- Hashtag: `#DesTINEdForKHEN`
 - RSVP-by date shown in copy: January 26, 2027
 
 ## Theme
