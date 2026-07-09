@@ -37,12 +37,12 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - **Groom's parents:** Arnold Baniqued, Olme Baniqued
 - **Bride's parents:** Rolan Gonzales, Analiza Dilag
 - **Best Man:** Arvin Kyle Baniqued · **Maid of Honor:** Melanie Alarcon
-- **Groomsmen:** Mark Kevin Baniqued, Adrian Karl Baniqued, Ronald John Baniqued, Ryan Ernesto Cañares, Angelo Planta, Ivan Ayala
+- **Groomsmen:** Mark Kevin Baniqued, Adrian Karl Baniqued, Ronald John Baniqued, Ryan Ernesto Cañares, Angelo Planta, Ivan Ayala, Dan Leighven Perez
 - **Bridesmaids:** Nerissa Alarcon, Chriza Bauyon, Jessa Banog, Kim Chelze Marra, Kris Madel Alejandria, Mariel Dela Cruz
 - **Flower Girls:** Queen Xyrelle Gacias, Ellara Jae Manuel
-- **Coin Bearer:** Zane Joey Ayala · **Ring Bearer:** Hayes Caleb Bajar · **Bible Bearer:** *TBA*
+- **Coin Bearer:** Zane Joey Ayala · **Ring Bearer:** Hayes Caleb Bajar
 - **Veil Sponsors:** Israel Agudo & Christine Joy Agudo · **Cord Sponsors:** *TBA* · **Candle Sponsors:** *TBA*
-- **Principal Sponsors (Ninong / Ninang):** Joseph & Somelyn Romano, Christian & Javerlyn Delos Reyes, Roel Arangilan & Marianne Degracia Mahinay, Natz & Bernadeth Degracia Cañares, Rico & Maria Easter Gonzales, Roger Baniqued & Rowena Ubalde
+- **Principal Sponsors (Ninong / Ninang):** Mr. Joseph & Mrs. Somelyn Romano, Mr. Christian & Mrs. Javerlyn Delos Reyes, Mr. Ruel Arangilan, Mrs. Marialie Degracia Mahinay, Engr. Renato & Mrs. Bernadeth Cañares, Mr. Rico & Mrs. Maria Easter Gonzales, Mr. Roger Baniqued, Mr Jay & Mrs. Rowena Ubalde, Ms. Josenie Aranas
 
 ## Still placeholder / open items
 - Hero background now uses a themed Unsplash placeholder (elegant garden archway) instead of a random `picsum.photos` image — see `#hero` background in `index.html`; swap for a real couple photo whenever ready
