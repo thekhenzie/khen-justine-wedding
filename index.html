@@ -637,9 +637,10 @@
 
     .detail-card {
       background: var(--paper);
-      padding: 48px 40px;
+      padding: 0;
       text-align: center;
       border: 1px solid var(--line);
+      overflow: hidden;
       transition: transform .4s ease, box-shadow .4s ease;
     }
 
@@ -648,10 +649,31 @@
       box-shadow: 0 18px 36px rgba(20, 84, 59, .12);
     }
 
+    .detail-card-photo {
+      height: 200px;
+      background-color: var(--cream);
+      background-size: cover;
+      background-position: center;
+    }
+
     .detail-card .ic {
-      font-size: 30px;
+      width: 58px;
+      height: 58px;
+      margin: -29px auto 0;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 6px 16px rgba(20, 40, 60, .2);
+      font-size: 25px;
       color: var(--gold);
-      margin-bottom: 14px;
+    }
+
+    .detail-card-body {
+      padding: 14px 40px 44px;
     }
 
     .detail-card h3 {
@@ -676,19 +698,32 @@
 
     .detail-card .qr {
       display: block;
-      width: 96px;
-      height: 96px;
-      margin: 22px auto 0;
+      width: 84px;
+      height: 84px;
+      margin: 20px auto 0;
       background: url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=Add-your-venue-map-link-here') center/cover;
       border: 1px solid var(--line);
     }
 
-    .detail-card .qr-cap {
-      font-size: 10px;
+    .detail-card .qr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      padding: 11px 26px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 8px;
+      color: var(--gold-dark);
+      text-decoration: none;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    .detail-card .qr-btn:hover {
+      background: var(--gold);
+      color: #fff;
     }
 
     /* ============================================================= */
@@ -1218,6 +1253,29 @@
       color: var(--muted);
     }
 
+    .inspo-strip {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .inspo-strip .inspo-ph {
+      width: 130px;
+      height: 170px;
+      background-color: var(--paper);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .inspo-strip .inspo-ph:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(20, 84, 59, .12);
+    }
+
     /* ============================================================= */
     /*  GIFT GUIDE                                                   */
     /* ============================================================= */
@@ -1235,6 +1293,61 @@
       font-size: 40px;
       color: var(--gold);
       margin-bottom: 10px;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 680px;
+      margin: 30px auto 0;
+    }
+
+    .gift-card {
+      background: var(--paper);
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid var(--line);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .gift-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(20, 84, 59, .12);
+    }
+
+    .gift-card .ic {
+      font-size: 30px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .gift-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      color: var(--blue);
+    }
+
+    .gift-card p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .gift-card .qr {
+      display: block;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 16px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 640px) {
+      .gift-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ============================================================= */
@@ -1521,28 +1634,38 @@
     </div>
     <div class="detail-grid reveal stagger">
       <div class="detail-card">
+        <div class="detail-card-photo" style="background-image:url('assets/ceremony.jpg');"></div>
         <div class="ic">&#9962;</div>
-        <h3>Ceremony</h3>
-        <div class="time">2:00 PM</div>
-        <p>Diocesan Shrine and Parish of</p>
-        <p>Nuestra Se&ntilde;ora de los Desamparados</p>
-        <a href="https://www.google.com/maps/place/Diocesan+Shrine+and+Parish+of+Nuestra+Se%C3%B1ora+de+los+Desamparados/@14.6307458,121.0936135,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b833fbc2818f:0x9d133b0831c4c5f5!8m2!3d14.6307406!4d121.0961884!16s%2Fm%2F02qb31v?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank" rel="noopener" class="qr"
-          style="background-image:url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FDiocesan%2BShrine%2Band%2BParish%2Bof%2BNuestra%2BSe%25C3%25B1ora%2Bde%2Blos%2BDesamparados%2F%4014.6307458%2C121.0936135%2C17z%2Fdata%3D%213m1%214b1%214m6%213m5%211s0x3397b833fbc2818f%3A0x9d133b0831c4c5f5%218m2%213d14.6307406%214d121.0961884%2116s%252Fm%252F02qb31v%3Fentry%3Dttu%26g_ep%3DEgoyMDI2MDYyOS4wIKXMDSoASAFQAw%253D%253D');"></a>
-        <a href="https://www.google.com/maps/place/Diocesan+Shrine+and+Parish+of+Nuestra+Se%C3%B1ora+de+los+Desamparados/@14.6307458,121.0936135,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b833fbc2818f:0x9d133b0831c4c5f5!8m2!3d14.6307406!4d121.0961884!16s%2Fm%2F02qb31v?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank" rel="noopener" class="qr-cap" style="display:block;">Scan or tap for directions</a>
+        <div class="detail-card-body">
+          <h3>Ceremony</h3>
+          <div class="time">2:00 PM</div>
+          <p>Diocesan Shrine and Parish of</p>
+          <p>Nuestra Se&ntilde;ora de los Desamparados</p>
+          <!-- QR code -- hidden for now. Uncomment to bring back.
+          <a href="https://www.google.com/maps/place/Diocesan+Shrine+and+Parish+of+Nuestra+Se%C3%B1ora+de+los+Desamparados/@14.6307458,121.0936135,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b833fbc2818f:0x9d133b0831c4c5f5!8m2!3d14.6307406!4d121.0961884!16s%2Fm%2F02qb31v?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener" class="qr"
+            style="background-image:url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FDiocesan%2BShrine%2Band%2BParish%2Bof%2BNuestra%2BSe%25C3%25B1ora%2Bde%2Blos%2BDesamparados%2F%4014.6307458%2C121.0936135%2C17z%2Fdata%3D%213m1%214b1%214m6%213m5%211s0x3397b833fbc2818f%3A0x9d133b0831c4c5f5%218m2%213d14.6307406%214d121.0961884%2116s%252Fm%252F02qb31v%3Fentry%3Dttu%26g_ep%3DEgoyMDI2MDYyOS4wIKXMDSoASAFQAw%253D%253D');"></a>
+          -->
+          <a href="https://www.google.com/maps/place/Diocesan+Shrine+and+Parish+of+Nuestra+Se%C3%B1ora+de+los+Desamparados/@14.6307458,121.0936135,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b833fbc2818f:0x9d133b0831c4c5f5!8m2!3d14.6307406!4d121.0961884!16s%2Fm%2F02qb31v?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener" class="qr-btn">Get Directions</a>
+        </div>
       </div>
       <div class="detail-card">
+        <div class="detail-card-photo" style="background-image:url('assets/reception.jpg');"></div>
         <div class="ic">&#127870;</div>
-        <h3>Reception</h3>
-        <div class="time">4:00 PM</div>
-        <p>Water Nymph Resort</p>
-        <p>Event Resort</p>
-        <a href="https://www.google.com/maps/place/Water+Nymph+Resort+-+Events+Venue/@14.638959,121.1074612,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b9b17ca0b9a9:0xe1c8f5b0f4239bef!8m2!3d14.6389538!4d121.1100361!16s%2Fg%2F1tfvdqyv?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank" rel="noopener" class="qr"
-          style="background-image:url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FWater%2BNymph%2BResort%2B-%2BEvents%2BVenue%2F%4014.638959%2C121.1074612%2C17z%2Fdata%3D%213m1%214b1%214m6%213m5%211s0x3397b9b17ca0b9a9%3A0xe1c8f5b0f4239bef%218m2%213d14.6389538%214d121.1100361%2116s%252Fg%252F1tfvdqyv%3Fentry%3Dttu%26g_ep%3DEgoyMDI2MDYyOS4wIKXMDSoASAFQAw%253D%253D');"></a>
-        <a href="https://www.google.com/maps/place/Water+Nymph+Resort+-+Events+Venue/@14.638959,121.1074612,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b9b17ca0b9a9:0xe1c8f5b0f4239bef!8m2!3d14.6389538!4d121.1100361!16s%2Fg%2F1tfvdqyv?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank" rel="noopener" class="qr-cap" style="display:block;">Scan or tap for directions</a>
+        <div class="detail-card-body">
+          <h3>Reception</h3>
+          <div class="time">4:00 PM</div>
+          <p>Water Nymph Resort</p>
+          <p>Events Venue</p>
+          <!-- QR code -- hidden for now. Uncomment to bring back.
+          <a href="https://www.google.com/maps/place/Water+Nymph+Resort+-+Events+Venue/@14.638959,121.1074612,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b9b17ca0b9a9:0xe1c8f5b0f4239bef!8m2!3d14.6389538!4d121.1100361!16s%2Fg%2F1tfvdqyv?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener" class="qr"
+            style="background-image:url('https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FWater%2BNymph%2BResort%2B-%2BEvents%2BVenue%2F%4014.638959%2C121.1074612%2C17z%2Fdata%3D%213m1%214b1%214m6%213m5%211s0x3397b9b17ca0b9a9%3A0xe1c8f5b0f4239bef%218m2%213d14.6389538%214d121.1100361%2116s%252Fg%252F1tfvdqyv%3Fentry%3Dttu%26g_ep%3DEgoyMDI2MDYyOS4wIKXMDSoASAFQAw%253D%253D');"></a>
+          -->
+          <a href="https://www.google.com/maps/place/Water+Nymph+Resort+-+Events+Venue/@14.638959,121.1074612,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b9b17ca0b9a9:0xe1c8f5b0f4239bef!8m2!3d14.6389538!4d121.1100361!16s%2Fg%2F1tfvdqyv?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank" rel="noopener" class="qr-btn">Get Directions</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1718,6 +1841,7 @@
             <li>Mr. Rico Gonzales</li>
             <li>Mr. Jay Ubalde</li>
             <li>Mr. Roger Baniqued</li>
+            <li>Mr. Jing Gonzales</li>
           </ul>
         </div>
         <div class="role-col">
@@ -1729,7 +1853,7 @@
             <li>Mrs. Bernadeth Ca&ntilde;ares</li>
             <li>Mrs. Maria Easter Gonzales</li>
             <li>Mrs. Rowena Ubalde</li>
-            <li>Ms. Josenie Aranas</li>
+            <li>Mrs. Lalaine Manuel</li>
           </ul>
         </div>
       </div>
@@ -1746,21 +1870,29 @@
         our celebration. Kindly avoid wearing the bride's colors.</p>
       <div class="swatches">
         <div class="swatch">
-          <div class="dot" style="background:#26374a;"></div><small>Navy</small>
-        </div>
-        <div class="swatch">
           <div class="dot" style="background:#5c7994;"></div><small>Dusty Blue</small>
         </div>
         <div class="swatch">
-          <div class="dot" style="background:#c6a256;"></div><small>Gold</small>
+          <div class="dot" style="background:#7a8b99;"></div><small>Blue Grey</small>
         </div>
         <div class="swatch">
-          <div class="dot" style="background:#dcc07f;"></div><small>Champagne</small>
+          <div class="dot" style="background:#b7bdc4;"></div><small>Silver Grey</small>
         </div>
         <div class="swatch">
-          <div class="dot" style="background:#eef1f3;"></div><small>Cloud</small>
+          <div class="dot" style="background:#d6cfc3;"></div><small>Cool Beige</small>
+        </div>
+        <div class="swatch">
+          <div class="dot" style="background:#8c7b6c;"></div><small>Taupe</small>
         </div>
       </div>
+      <!-- Outfit inspiration strip -- hidden for now, photos TBA. Uncomment when ready.
+      <div class="inspo-strip reveal stagger">
+        <div class="inspo-ph" style="background-image:url('assets/attire1.jpg');"></div>
+        <div class="inspo-ph" style="background-image:url('assets/attire2.jpg');"></div>
+        <div class="inspo-ph" style="background-image:url('assets/attire3.jpg');"></div>
+        <div class="inspo-ph" style="background-image:url('assets/attire4.jpg');"></div>
+      </div>
+      -->
     </div>
   </section>
 
@@ -1866,6 +1998,25 @@
         <p class="lead">Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with
           a gift, a monetary contribution toward our new beginning together would be deeply appreciated. </p>
       </div>
+      <!-- GCash / Bank Transfer cards -- hidden for now, real details TBA. Uncomment when ready.
+      <div class="gift-grid reveal stagger">
+        <div class="gift-card">
+          <h3>GCash</h3>
+          <div class="qr"
+            style="background-image:url('https://api.qrserver.com/v1/create-qr-code/?size=260x260&amp;data=Add-GCash-QR-or-number-here');">
+          </div>
+          <p>Juan Dela Cruz</p>
+          <p>09XX XXX XXXX</p>
+        </div>
+        <div class="gift-card">
+          <h3>Bank Transfer</h3>
+          <div class="ic">&#127974;</div>
+          <p>Bank Name</p>
+          <p>Account Name: Juan Dela Cruz</p>
+          <p>Account Number: 0000-0000-0000</p>
+        </div>
+      </div>
+      -->
     </div>
   </section>
 
