@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Guest List Admin — Khen &amp; Tine</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 9px 18px;
+      border: 1px solid #333;
+      background: #333;
+      color: #fff;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: #333;
+    }
+
+    button.danger {
+      background: #a33;
+      border-color: #a33;
+    }
+
+    #admin-error {
+      color: #a33;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      padding: 8px 6px;
+      vertical-align: top;
+    }
+
+    #admin-panel {
+      display: none;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      margin: 28px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Guest List Admin</h1>
+
+  <div id="login-panel">
+    <div class="field">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" />
+    </div>
+    <div class="field">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" />
+    </div>
+    <button id="login-btn">Log In</button>
+    <p id="admin-error"></p>
+  </div>
+
+  <div id="admin-panel">
+    <div class="top-bar">
+      <span id="admin-user-email"></span>
+      <button class="secondary" id="logout-btn">Log Out</button>
+    </div>
+
+    <h2 id="form-heading">Add Invitation</h2>
+    <div class="field">
+      <label for="form-display-name">Display Name (as it'll be typed on the RSVP page)</label>
+      <input type="text" id="form-display-name" />
+    </div>
+    <div class="field">
+      <label for="form-seat-count">Seat Count</label>
+      <input type="number" id="form-seat-count" min="1" max="20" value="1" />
+    </div>
+    <div id="form-seat-names"></div>
+    <button id="form-save-btn">Save Invitation</button>
+    <button class="secondary" id="form-cancel-btn" style="display:none;">Cancel Edit</button>
+    <p id="form-error" style="color:#a33;font-size:13px;"></p>
+    <hr />
+
+    <h2>Invitations</h2>
+    <table id="guest-table">
+      <thead>
+        <tr>
+          <th>Display Name</th>
+          <th>Seats</th>
+          <th>Responded?</th>
+          <th>Summary</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="guest-table-body"></tbody>
+    </table>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    /* =============================================================
+       CONFIG — Firebase (same project as index.html)
+    ============================================================= */
+    var FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBSwuwpeqabIRAYBvIk2awF5zRR9DH0Lug",
+      authDomain: "khen-tine-wedding.firebaseapp.com",
+      projectId: "khen-tine-wedding",
+      storageBucket: "khen-tine-wedding.firebasestorage.app",
+      messagingSenderId: "794852863894",
+      appId: "1:794852863894:web:406150f1f36ea153ff37b7",
+      measurementId: "G-X7R8SL4ZV9"
+    };
+
+    firebase.initializeApp(FIREBASE_CONFIG);
+    var auth = firebase.auth();
+    var db = firebase.firestore();
+    var guestsRef = db.collection('guests');
+
+    function normalizeGuestName(name) {
+      return name.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    var loginPanel = document.getElementById('login-panel');
+    var adminPanel = document.getElementById('admin-panel');
+    var adminError = document.getElementById('admin-error');
+
+    document.getElementById('login-btn').addEventListener('click', function () {
+      var email = document.getElementById('login-email').value.trim();
+      var password = document.getElementById('login-password').value;
+      adminError.textContent = '';
+      auth.signInWithEmailAndPassword(email, password).catch(function (err) {
+        adminError.textContent = err.message;
+      });
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', function () {
+      auth.signOut();
+    });
+
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        loginPanel.style.display = 'none';
+        adminPanel.style.display = 'block';
+        document.getElementById('admin-user-email').textContent = user.email;
+        renderGuestTable();
+      } else {
+        loginPanel.style.display = '';
+        adminPanel.style.display = 'none';
+      }
+    });
+
+    function renderGuestTable() {
+      var tbody = document.getElementById('guest-table-body');
+      tbody.innerHTML = '<tr><td colspan="5">Loading…</td></tr>';
+      guestsRef.get().then(function (snapshot) {
+        if (snapshot.empty) {
+          tbody.innerHTML = '<tr><td colspan="5">No invitations yet.</td></tr>';
+          return;
+        }
+        var rows = '';
+        var ids = [];
+        snapshot.forEach(function (doc) {
+          var d = doc.data();
+          var responded = d.responses ? 'Yes' : 'No';
+          var summary = '—';
+          if (d.responses) {
+            var acceptedCount = d.responses.filter(function (r) { return r.attending; }).length;
+            summary = acceptedCount + '/' + d.responses.length + ' accepted';
+          }
+          ids.push(doc.id);
+          rows += '<tr>' +
+            '<td>' + escapeHtml(d.displayName) + '</td>' +
+            '<td>' + d.seatCount + '</td>' +
+            '<td>' + responded + '</td>' +
+            '<td>' + escapeHtml(summary) + '</td>' +
+            '<td><button class="secondary edit-guest-btn">Edit</button> ' +
+            '<button class="danger delete-guest-btn">Delete</button></td>' +
+            '</tr>';
+        });
+        tbody.innerHTML = rows;
+        tbody.querySelectorAll('tr').forEach(function (tr, i) {
+          if (ids[i]) tr.dataset.id = ids[i];
+        });
+        tbody.querySelectorAll('.edit-guest-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = this.closest('tr').getAttribute('data-id');
+            guestsRef.doc(id).get().then(function (doc) {
+              loadInvitationIntoForm(doc.id, doc.data());
+            });
+          });
+        });
+        tbody.querySelectorAll('.delete-guest-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var row = this.closest('tr');
+            var id = row.getAttribute('data-id');
+            if (!confirm('Delete this invitation? This cannot be undone.')) return;
+            guestsRef.doc(id).delete().then(function () {
+              renderGuestTable();
+            }).catch(function (err) {
+              console.error('Failed to delete invitation:', err);
+              alert('Failed to delete: ' + err.message);
+            });
+          });
+        });
+      }).catch(function (err) {
+        console.error('Failed to load invitations:', err);
+        tbody.innerHTML = '<tr><td colspan="5">Failed to load invitations.</td></tr>';
+      });
+    }
+
+    var editingId = null;
+
+    function renderSeatNameInputs(count, existingNames) {
+      var container = document.getElementById('form-seat-names');
+      var html = '';
+      for (var i = 0; i < count; i++) {
+        html += '<div class="field"><label>Seat ' + (i + 1) + ' Name</label>' +
+          '<input type="text" class="form-seat-name-input" /></div>';
+      }
+      container.innerHTML = html;
+      container.querySelectorAll('.form-seat-name-input').forEach(function (input, i) {
+        input.value = (existingNames && existingNames[i]) ? existingNames[i] : '';
+      });
+    }
+
+    var formSeatCountInput = document.getElementById('form-seat-count');
+    formSeatCountInput.addEventListener('input', function () {
+      var count = Math.max(1, Math.min(20, parseInt(formSeatCountInput.value, 10) || 1));
+      var existing = Array.prototype.map.call(
+        document.querySelectorAll('.form-seat-name-input'),
+        function (input) { return input.value; }
+      );
+      renderSeatNameInputs(count, existing);
+    });
+    renderSeatNameInputs(1, []);
+
+    function loadInvitationIntoForm(id, data) {
+      editingId = id;
+      document.getElementById('form-heading').textContent = 'Edit Invitation';
+      document.getElementById('form-display-name').value = data.displayName;
+      formSeatCountInput.value = data.seatCount;
+      renderSeatNameInputs(data.seatCount, data.seatNames);
+      document.getElementById('form-cancel-btn').style.display = '';
+      window.scrollTo(0, 0);
+    }
+
+    function resetForm() {
+      editingId = null;
+      document.getElementById('form-heading').textContent = 'Add Invitation';
+      document.getElementById('form-display-name').value = '';
+      formSeatCountInput.value = 1;
+      renderSeatNameInputs(1, []);
+      document.getElementById('form-cancel-btn').style.display = 'none';
+      document.getElementById('form-error').textContent = '';
+    }
+
+    document.getElementById('form-cancel-btn').addEventListener('click', resetForm);
+
+    function saveInvitation() {
+      var formError = document.getElementById('form-error');
+      formError.textContent = '';
+      var displayName = document.getElementById('form-display-name').value.trim();
+      var seatNames = Array.prototype.map.call(
+        document.querySelectorAll('.form-seat-name-input'),
+        function (input) { return input.value.trim(); }
+      );
+      var seatCount = seatNames.length;
+
+      if (!displayName) {
+        formError.textContent = 'Display name is required.';
+        return;
+      }
+      if (seatNames.some(function (n) { return !n; })) {
+        formError.textContent = 'Every seat needs a name.';
+        return;
+      }
+
+      var id = editingId || normalizeGuestName(displayName);
+      var saveBtn = document.getElementById('form-save-btn');
+      saveBtn.disabled = true;
+
+      guestsRef.doc(id).set({
+        displayName: displayName,
+        seatCount: seatCount,
+        seatNames: seatNames
+      }, { merge: true }).then(function () {
+        saveBtn.disabled = false;
+        resetForm();
+        renderGuestTable();
+      }).catch(function (err) {
+        saveBtn.disabled = false;
+        console.error('Failed to save invitation:', err);
+        formError.textContent = 'Failed to save: ' + err.message;
+      });
+    }
+
+    document.getElementById('form-save-btn').addEventListener('click', saveInvitation);
+  </script>
+</body>
+
+</html>

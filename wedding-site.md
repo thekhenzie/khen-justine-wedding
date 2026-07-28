@@ -6,7 +6,7 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - Couple: **Khen & Tine**
 - Date: **February 26, 2027** (Friday) — set in JS as `WEDDING_DATE = new Date(2027, 1, 26, 14, 0, 0)` near the bottom of the file (month is 0-indexed: `1` = Feb)
 - Ceremony: Diocesan Shrine and Parish of Nuestra Señora de los Desamparados — 2:00 PM
-- Reception: Water Nymph Resort – Event Resort — 4:00 PM
+- Reception: Water Nymph Resort – Events Venue — 4:00 PM
 - Hashtag: `#DesTINEdForKHEN`
 - RSVP-by date shown in copy: January 26, 2027
 
@@ -28,7 +28,7 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 9. **Attire** (`#attire`) — dress code + color swatches
 10. **Gallery** (`#gallery`) — rotating coverflow-style carousel (dark navy background, matches Entourage/Sponsors theme) — center photo large, prev/next photos peek on either side with a 3D tilt, arrow buttons + click-side-photo-to-jump + touch swipe + autoplay every 4.5s
 11. **Messages** (`#messages`) — guestbook form (Firebase-backed) + live message wall
-12. **RSVP** (`#rsvp`) — form (Firebase-backed, private responses)
+12. **RSVP** (`#rsvp`) — guest-registry lookup: type your invitation name, toggle each invited seat's attendance individually (Firebase-backed; invitations managed via `admin.html`)
 13. **Gifts** (`#gifts`) — gift guide note
 14. **FAQ** (`#faq`) — accordion
 15. Footer
@@ -42,7 +42,7 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - **Flower Girls:** Queen Xyrelle Gacias, Ellara Jae Manuel
 - **Coin Bearer:** Zane Joey Ayala · **Ring Bearer:** Hayes Caleb Bajar
 - **Veil Sponsors:** Israel Agudo & Christine Joy Agudo · **Cord Sponsors:** *TBA* · **Candle Sponsors:** *TBA*
-- **Principal Sponsors (Ninong / Ninang):** Mr. Joseph & Mrs. Somelyn Romano, Mr. Christian & Mrs. Javerlyn Delos Reyes, Mr. Ruel Arangilan, Mrs. Marialie Degracia Mahinay, Engr. Renato & Mrs. Bernadeth Cañares, Mr. Rico & Mrs. Maria Easter Gonzales, Mr. Roger Baniqued, Mr Jay & Mrs. Rowena Ubalde, Ms. Josenie Aranas
+- **Principal Sponsors (Ninong / Ninang):** Mr. Joseph & Mrs. Somelyn Romano, Mr. Christian & Mrs. Javerlyn Delos Reyes, Mr. Ruel Arangilan, Mrs. Marialie Degracia Mahinay, Engr. Renato & Mrs. Bernadeth Cañares, Mr. Rico & Mrs. Maria Easter Gonzales, Mr. Roger Baniqued, Mr Jay & Mrs. Rowena Ubalde, Mrs. Lalaine Manuel, Mr. Jing Gonzales
 
 ## Still placeholder / open items
 - Hero background now uses a themed Unsplash placeholder (elegant garden archway) instead of a random `picsum.photos` image — see `#hero` background in `index.html`; swap for a real couple photo whenever ready
@@ -50,6 +50,9 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - Gallery carousel has 8 real photos loaded from `assets/gallery1.jpg` through `assets/gallery8.jpg` (in `#car-track` in `index.html`). Add/remove `<div class="car-slide">` blocks to change the photo count — the JS reads however many exist automatically
 - Our Story timeline: copy is final (real story) and photos are real, loaded from `assets/story1.jpg` through `assets/story4.jpg` (see `.tl-step .ph` CSS in `index.html`) — one image per step in order (We First Crossed Paths, Together, Our Adventures, The Proposal)
 - Candle Sponsors and Cord Sponsors names — not yet provided (Bible Bearer role removed)
+- Gift Guide (`#gifts`) GCash + Bank Transfer cards are commented out in `index.html` (values were placeholders: "Juan Dela Cruz", "09XX XXX XXXX", "Bank Name", "0000-0000-0000") — uncomment the `.gift-grid` block and fill in real details when ready
+- Ceremony/Reception cards (`#details`) now have a photo banner at the top of each card (`.detail-card-photo`) — expects `assets/ceremony.jpg` and `assets/reception.jpg`; until those files exist the banners just show as a blank cream-colored strip
+- Attire & Motif (`#attire`) outfit-inspiration strip (`.inspo-strip`, 4 photos) is commented out in `index.html` — uncomment and fill in `assets/attire1.jpg` through `assets/attire4.jpg` when ready
 - FIREBASE_CONFIG is filled in with the real `khen-tine-wedding` project values; guestbook Firestore rules are published — RSVP rules still need to be added (see "Guestbook + RSVP backend" below) before RSVP submissions will succeed
 - Background music file not added yet — see "Background Music" below
 
@@ -58,11 +61,11 @@ Single self-contained file: **`index.html`** (HTML + CSS + JS inline, no build s
 - Reception QR/"Get Directions" links to the Google Maps place page for Water Nymph Resort - Events Venue
 
 ## Guestbook + RSVP backend (Firebase Firestore)
-Both the "Leave us a Message" form (public wall) and the RSVP form (private, couple-only) are wired to Firebase Firestore (`index.html`, near `FIREBASE_CONFIG` in the bottom `<script>`, using the `firebase-app-compat` / `firebase-firestore-compat` SDKs loaded via CDN just above it) — `messages` and `rsvps` collections respectively. Setup:
+The "Leave us a Message" form (public wall), the RSVP guest-registry lookup, and the private `admin.html` invitation manager are all wired to Firebase Firestore (`index.html` and `admin.html`, near `FIREBASE_CONFIG`, using the `firebase-app-compat` / `firebase-firestore-compat` SDKs, plus `firebase-auth-compat` in `admin.html` only) — `messages` and `guests` collections respectively. Setup:
 
 1. Go to https://console.firebase.google.com/ → **Add project** → give it any name (e.g. `khen-tine-wedding`) → finish the wizard (Google Analytics is optional, can skip).
 2. In the project, click the **`</>` (Web) icon** to register a web app → nickname it anything → **do not** check "set up Firebase Hosting" → Register app.
-3. Firebase shows a `firebaseConfig` object — copy those values into `FIREBASE_CONFIG` in `index.html` (replace all the `YOUR_...` placeholders).
+3. Firebase shows a `firebaseConfig` object — copy those values into `FIREBASE_CONFIG` in **both** `index.html` and `admin.html` (replace all the `YOUR_...` placeholders).
 4. In the left sidebar go to **Build → Firestore Database** → **Create database** → start in **production mode** → pick a region close to you (e.g. `asia-southeast1`) → Enable.
 5. Go to the **Rules** tab of Firestore and replace the rules with:
    ```
@@ -77,22 +80,26 @@ Both the "Leave us a Message" form (public wall) and the RSVP form (private, cou
                        && request.resource.data.message.size() < 500;
          allow update, delete: if false;
        }
-       match /rsvps/{id} {
-         allow read: if false;
-         allow create: if request.resource.data.name is string
-                       && request.resource.data.name.size() > 0
-                       && request.resource.data.name.size() < 80
-                       && request.resource.data.attending is string
-                       && request.resource.data.attending.size() < 40
-                       && request.resource.data.note is string
-                       && request.resource.data.note.size() < 500;
-         allow update, delete: if false;
+       match /guests/{id} {
+         allow get: if true;
+         allow list: if request.auth != null;
+         allow create, delete: if request.auth != null;
+         allow update: if request.auth != null
+           || (
+             request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['responses', 'respondedAt'])
+             && request.resource.data.responses.size() == resource.data.seatNames.size()
+             && request.resource.data.responses.size() <= 20
+           );
        }
      }
    }
    ```
-   `messages` stays publicly readable (it's the guestbook wall guests see); `rsvps` blocks all reads from the site so responses are only visible to you in the Firebase console under **Firestore Database → Data → rsvps**. Both block edits/deletes and cap field sizes to reduce abuse. Click **Publish**.
-6. Commit the updated `FIREBASE_CONFIG` values and push — GitHub Pages will redeploy, and both forms will start saving real data to Firestore.
+   `messages` stays publicly readable (it's the guestbook wall guests see). `guests` allows anyone to fetch **one** invitation by its exact document ID (`get`), but nobody can list/enumerate the whole collection unless logged in as the admin (`request.auth != null`) — so a guest looking up their own name can never see anyone else's. Guests can only update the `responses`/`respondedAt` fields of an invitation that already exists, and only with a `responses` array the same length as `seatNames`; only the logged-in admin can create, delete, or edit an invitation's `displayName`/`seatCount`/`seatNames`. Click **Publish**.
+6. In the left sidebar go to **Build → Authentication** → **Get started** → enable the **Email/Password** sign-in provider.
+7. Still in Authentication, go to the **Users** tab → **Add user** → enter your own email + a password. This is the one login `admin.html` uses.
+8. Open `admin.html` directly (it's not linked from the site nav), log in with the account from step 7, and add one document per invitation: the name as it'll be typed on the RSVP page, how many seats it covers, and each seat's name. Do this for every invitation before sharing links to guests.
+9. Commit the updated `FIREBASE_CONFIG` values and push — GitHub Pages will redeploy, and the guestbook, RSVP, and admin page will all start using real data.
 - Optional hardening later: add Firebase App Check, or a Cloud Function to moderate/rate-limit submissions.
 
 ## Background Music

@@ -1219,6 +1219,184 @@
       }
     }
 
+    .rsvp-status {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      margin-top: 10px;
+      letter-spacing: .3px;
+    }
+
+    .rsvp-status.error {
+      color: #e7a1a1;
+    }
+
+    .rsvp-hero-count {
+      margin-bottom: 34px;
+    }
+
+    .rsvp-hero-num {
+      font-family: var(--serif);
+      font-size: clamp(48px, 10vw, 80px);
+      color: #fff;
+      line-height: 1;
+    }
+
+    .rsvp-hero-sub {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      margin-top: 8px;
+    }
+
+    .rsvp-confirm-title {
+      font-family: var(--sans);
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .rsvp-confirm-sub {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255, 255, 255, .7);
+      margin-bottom: 26px;
+    }
+
+    .seat-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .seat-index {
+      font-family: var(--serif-soft);
+      font-style: italic;
+      color: var(--gold-light);
+      width: 28px;
+      flex-shrink: 0;
+    }
+
+    .seat-name-input {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 4px;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .32);
+      background: transparent;
+      color: #fff;
+      font-family: var(--serif-soft);
+      font-size: 18px;
+      font-style: italic;
+      transition: border-color .3s;
+    }
+
+    .seat-name-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .seat-toggle {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .seat-toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .seat-toggle-track {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, .25);
+      border-radius: 999px;
+      transition: background .25s;
+    }
+
+    .seat-toggle-input:checked~.seat-toggle-track {
+      background: var(--gold);
+    }
+
+    .seat-toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform .25s;
+    }
+
+    .seat-toggle-input:checked~.seat-toggle-track .seat-toggle-thumb {
+      transform: translateX(22px);
+    }
+
+    .seat-toggle-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      flex-shrink: 0;
+      width: 128px;
+      text-align: left;
+    }
+
+    .seat-toggle-label.declined {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .rsvp-back-link {
+      display: block;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, .6);
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin: 4px 0 22px;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    .rsvp-back-link:hover {
+      color: #fff;
+    }
+
+    .rsvp-deadline {
+      margin-top: 34px;
+      padding: 20px;
+      background: rgba(0, 0, 0, .18);
+      text-align: center;
+    }
+
+    .rsvp-deadline-date {
+      font-family: var(--serif-soft);
+      font-style: italic;
+      font-size: 20px;
+      color: #fff;
+      margin-top: 6px;
+    }
+
+    .rsvp-notice {
+      margin-top: 24px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, .75);
+    }
+
     /* ============================================================= */
     /*  ATTIRE & MOTIF                                               */
     /* ============================================================= */
@@ -1915,6 +2093,8 @@
         <div class="car-slide"><img src="assets/gallery6.jpg" alt="Gallery photo 6" /></div>
         <div class="car-slide"><img src="assets/gallery7.jpg" alt="Gallery photo 7" /></div>
         <div class="car-slide"><img src="assets/gallery8.jpg" alt="Gallery photo 8" /></div>
+        <div class="car-slide"><img src="assets/gallery9.jpg" alt="Gallery photo 9" /></div>
+        <div class="car-slide"><img src="assets/gallery10.jpg" alt="Gallery photo 10" /></div>
       </div>
       <button class="car-arrow car-next-btn" aria-label="Next photo">&#10095;</button>
     </div>
@@ -1959,31 +2139,45 @@
       <div class="divider"><span class="ln"></span><span class="dia">&#9670;</span><span class="ln"></span></div>
       <p style="margin-bottom:10px;color:#eee;">Kindly respond on or before <strong>January 26, 2027</strong>.</p>
     </div>
-    <form class="rsvp-card reveal" id="rsvp-form">
-      <div class="field"><label for="r-name">Full Name</label><input type="text" id="r-name" placeholder="Your name"
-          required /></div>
-      <div class="field"><label for="r-attend">Will you attend?</label>
-        <select id="r-attend" required>
-          <option value="">Please choose…</option>
-          <option>Joyfully accepts</option>
-          <option>Regretfully declines</option>
-        </select>
+
+    <!-- STATE 1: name lookup -->
+    <div class="rsvp-card reveal" id="rsvp-lookup">
+      <div class="field">
+        <label for="r-name">Guest Name</label>
+        <input type="text" id="r-name" placeholder="Enter your name as written in the invitation" />
+        <p class="rsvp-status" id="rsvp-status">Ready — enter your name above</p>
       </div>
-      <div class="field"><label for="r-guests">Number of guests</label>
-        <select id="r-guests">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
+      <button type="button" class="btn" id="rsvp-find-btn">Find My Invitation</button>
+    </div>
+
+    <!-- STATE 2: confirm attendance (hidden until a matching invitation is found) -->
+    <div class="rsvp-card reveal" id="rsvp-confirm" style="display:none;">
+      <div class="rsvp-hero-count">
+        <div class="rsvp-hero-num" id="rsvp-seat-count">0</div>
+        <p class="rsvp-hero-sub">guest(s) included in the invitation</p>
       </div>
-      <div class="field"><label for="r-msg">A note for the couple</label><textarea id="r-msg" rows="3"
-          placeholder="Optional message"></textarea></div>
-      <button type="submit" class="btn">Send RSVP</button>
-    </form>
+      <p class="rsvp-confirm-title">Confirm Attendance</p>
+      <p class="rsvp-confirm-sub">Toggle each name below to mark who will be attending.</p>
+      <div id="rsvp-seat-list"></div>
+      <p class="rsvp-status" id="rsvp-confirm-status"></p>
+      <button type="button" class="rsvp-back-link" id="rsvp-back-btn">&lsaquo; Search another name</button>
+      <button type="button" class="btn" id="rsvp-confirm-btn">Confirm Response</button>
+      <div class="rsvp-deadline">
+        <p class="eyebrow" style="color:var(--gold-light);margin-bottom:6px;">RSVP Deadline</p>
+        <p class="rsvp-deadline-date">January 26, 2027</p>
+      </div>
+      <!-- ✏️ EDIT this notice's wording anytime -->
+      <p class="rsvp-notice">Only guests with <strong>confirmed RSVPs</strong> will be accommodated at the
+        celebration. We respectfully ask that you refer to the invited guests indicated in your invitation.<br />
+        <strong>STRICTLY NO PLUS ONE.</strong> Thank you for your kind understanding.</p>
+    </div>
+
+    <!-- STATE 3: thank you -->
     <div class="form-thanks" id="rsvp-thanks">
       <div class="ic">&#10084;</div>
       <h3 style="color:#fff;font-size:30px;margin-bottom:10px;">Thank you!</h3>
-      <p style="color:#eee;">Your RSVP has been received. We can't wait to celebrate with you.</p>
+      <p style="color:#eee;" id="rsvp-thanks-msg">Your RSVP has been received. We can't wait to celebrate with you.
+      </p>
     </div>
   </section>
 
@@ -2069,7 +2263,8 @@
   </footer>
 
   <!-- ============================================================= -->
-  <!--  FIREBASE — powers the "Leave us a Message" guestbook.        -->
+  <!--  powers the "Leave us a Message" guestbook AND the RSVP guest    -->
+  <!--  registry lookup.                                                -->
   <!--  Fill in FIREBASE_CONFIG below with your own project's values -->
   <!--  (Firebase console → Project settings → your web app's        -->
   <!--  "SDK setup and configuration" → Config). See README for the  -->
@@ -2085,7 +2280,8 @@
     var WEDDING_DATE = new Date(2027, 1, 26, 14, 0, 0); // Feb 26, 2027, 2:00 PM
 
     /* =============================================================
-       CONFIG — Firebase (used only by the guestbook / message wall)
+       CONFIG — Firebase (used by the guestbook / message wall and by the
+       RSVP guest registry)
        Replace every value below with your own Firebase project's config.
     ============================================================= */
     var FIREBASE_CONFIG = {
@@ -2270,7 +2466,7 @@
     firebase.initializeApp(FIREBASE_CONFIG);
     var db = firebase.firestore();
     var messagesRef = db.collection('messages');
-    var rsvpsRef = db.collection('rsvps');
+    var guestsRef = db.collection('guests');
 
     function escapeHtml(str) {
       var div = document.createElement('div');
@@ -2326,36 +2522,187 @@
       });
     });
 
-    /* ---------- RSVP (Firebase Firestore) ---------- */
-    var rsvpForm = document.getElementById('rsvp-form');
-    rsvpForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = document.getElementById('r-name').value.trim();
-      var attending = document.getElementById('r-attend').value;
-      var guests = document.getElementById('r-guests').value;
-      var note = document.getElementById('r-msg').value.trim();
-      if (!name || !attending) return;
+    /* ---------- RSVP (guest registry lookup) ---------- */
+    function normalizeGuestName(name) {
+      return name.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
 
-      var btn = rsvpForm.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
+    function toRomanNumeral(num) {
+      var map = [
+        [10, 'x'], [9, 'ix'], [5, 'v'], [4, 'iv'], [1, 'i']
+      ];
+      var n = num, out = '';
+      for (var i = 0; i < map.length; i++) {
+        while (n >= map[i][0]) {
+          out += map[i][1];
+          n -= map[i][0];
+        }
+      }
+      return out + '.';
+    }
 
-      rsvpsRef.add({
-        name: name,
-        attending: attending,
-        guests: guests,
-        note: note,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    function renderSeatList(guestData) {
+      document.getElementById('rsvp-confirm-status').textContent = '';
+      var seatNames = guestData.seatNames || [];
+      var savedResponses = guestData.responses;
+      document.getElementById('rsvp-seat-count').textContent = seatNames.length;
+
+      var names = [];
+      var html = '';
+      for (var i = 0; i < seatNames.length; i++) {
+        var name = seatNames[i];
+        var attending = true;
+        if (savedResponses && savedResponses[i]) {
+          name = savedResponses[i].name;
+          attending = !!savedResponses[i].attending;
+        }
+        names.push(name);
+        html += '' +
+          '<div class="seat-row" data-index="' + i + '">' +
+          '<span class="seat-index">' + toRomanNumeral(i + 1) + '</span>' +
+          '<input type="text" class="seat-name-input" maxlength="80" />' +
+          '<label class="seat-toggle">' +
+          '<input type="checkbox" class="seat-toggle-input"' + (attending ? ' checked' : '') + ' />' +
+          '<span class="seat-toggle-track"><span class="seat-toggle-thumb"></span></span>' +
+          '</label>' +
+          '<span class="seat-toggle-label' + (attending ? '' : ' declined') + '">' +
+          (attending ? 'Joyfully Accepts' : 'Regretfully Declines') +
+          '</span>' +
+          '</div>';
+      }
+      document.getElementById('rsvp-seat-list').innerHTML = html;
+
+      document.querySelectorAll('#rsvp-seat-list .seat-name-input').forEach(function (input, i) {
+        input.value = names[i];
+      });
+
+      document.querySelectorAll('#rsvp-seat-list .seat-toggle-input').forEach(function (input) {
+        input.addEventListener('change', function () {
+          var label = this.closest('.seat-row').querySelector('.seat-toggle-label');
+          label.classList.toggle('declined', !this.checked);
+          label.textContent = this.checked ? 'Joyfully Accepts' : 'Regretfully Declines';
+        });
+      });
+    }
+
+    function collectResponses() {
+      var rows = document.querySelectorAll('#rsvp-seat-list .seat-row');
+      var responses = [];
+      rows.forEach(function (row) {
+        var nameInput = row.querySelector('.seat-name-input');
+        var toggle = row.querySelector('.seat-toggle-input');
+        responses.push({
+          name: nameInput.value.trim(),
+          attending: toggle.checked
+        });
+      });
+      return responses;
+    }
+
+    document.getElementById('rsvp-back-btn').addEventListener('click', function () {
+      currentGuestId = null;
+      currentGuestData = null;
+      showRsvpState('lookup');
+    });
+
+    var rsvpConfirmBtn = document.getElementById('rsvp-confirm-btn');
+    rsvpConfirmBtn.addEventListener('click', function () {
+      if (!currentGuestId) return;
+      var responses = collectResponses();
+      var hasEmptyName = responses.some(function (r) { return !r.name; });
+      if (hasEmptyName) {
+        setRsvpConfirmStatus('Please fill in a name for every seat before confirming.', true);
+        return;
+      }
+
+      rsvpConfirmBtn.disabled = true;
+      rsvpConfirmBtn.textContent = 'Sending…';
+
+      guestsRef.doc(currentGuestId).update({
+        responses: responses,
+        respondedAt: firebase.firestore.FieldValue.serverTimestamp()
       }).then(function () {
-        rsvpForm.reset();
-        rsvpForm.style.display = 'none';
-        document.getElementById('rsvp-thanks').classList.add('show');
+        var acceptedCount = responses.filter(function (r) { return r.attending; }).length;
+        var msg = acceptedCount > 0
+          ? 'Your RSVP has been received. We can’t wait to celebrate with you.'
+          : 'Your RSVP has been received. We’ll miss you, but thank you for letting us know.';
+        document.getElementById('rsvp-thanks-msg').textContent = msg;
+        rsvpConfirmBtn.disabled = false;
+        rsvpConfirmBtn.textContent = 'Confirm Response';
+        showRsvpState('thanks');
       }).catch(function (err) {
         console.error('RSVP send failed:', err);
-        btn.disabled = false;
-        btn.textContent = 'Send RSVP';
-        alert('Sorry, your RSVP could not be sent. Please try again.');
+        rsvpConfirmBtn.disabled = false;
+        rsvpConfirmBtn.textContent = 'Confirm Response';
+        setRsvpConfirmStatus('Sorry, your RSVP could not be sent. Please try again.', true);
       });
+    });
+
+    var rsvpLookupEl = document.getElementById('rsvp-lookup');
+    var rsvpConfirmEl = document.getElementById('rsvp-confirm');
+    var rsvpThanksEl = document.getElementById('rsvp-thanks');
+
+    function showRsvpState(stateName) {
+      rsvpLookupEl.style.display = stateName === 'lookup' ? '' : 'none';
+      rsvpConfirmEl.style.display = stateName === 'confirm' ? '' : 'none';
+      if (stateName === 'thanks') {
+        rsvpThanksEl.classList.add('show');
+      } else {
+        rsvpThanksEl.classList.remove('show');
+      }
+    }
+
+    var rsvpStatusEl = document.getElementById('rsvp-status');
+    var rsvpNameInput = document.getElementById('r-name');
+    var rsvpFindBtn = document.getElementById('rsvp-find-btn');
+    var currentGuestId = null;
+    var currentGuestData = null;
+
+    function setRsvpStatus(message, isError) {
+      rsvpStatusEl.textContent = message;
+      rsvpStatusEl.classList.toggle('error', !!isError);
+    }
+
+    var rsvpConfirmStatusEl = document.getElementById('rsvp-confirm-status');
+    function setRsvpConfirmStatus(message, isError) {
+      rsvpConfirmStatusEl.textContent = message;
+      rsvpConfirmStatusEl.classList.toggle('error', !!isError);
+    }
+
+    function findInvitation() {
+      var typed = rsvpNameInput.value;
+      if (!typed.trim()) {
+        setRsvpStatus('Please enter your name above.', true);
+        return;
+      }
+      var id = normalizeGuestName(typed);
+      rsvpFindBtn.disabled = true;
+      setRsvpStatus('Searching…', false);
+
+      guestsRef.doc(id).get().then(function (doc) {
+        rsvpFindBtn.disabled = false;
+        if (!doc.exists) {
+          setRsvpStatus('We couldn’t find that name on our guest list. Please check the spelling, or enter it exactly as printed on your invitation.', true);
+          return;
+        }
+        currentGuestId = id;
+        currentGuestData = doc.data();
+        setRsvpStatus('Ready — enter your name above', false);
+        renderSeatList(currentGuestData);
+        showRsvpState('confirm');
+      }).catch(function (err) {
+        rsvpFindBtn.disabled = false;
+        console.error('Guest lookup failed:', err);
+        setRsvpStatus('Something went wrong looking up your invitation. Please try again.', true);
+      });
+    }
+
+    rsvpFindBtn.addEventListener('click', findInvitation);
+    rsvpNameInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        findInvitation();
+      }
     });
   </script>
 </body>
