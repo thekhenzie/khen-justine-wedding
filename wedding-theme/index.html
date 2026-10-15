@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<!-- Planning page for Khen & Tine (not linked from the invitation). Source: Desktop\Wedding\wedding-theme\index.html -->
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Khen &amp; Tine Wedding Colors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap">
+<style>
+  /* Layout: navy hero band like the invitation site, then a two-column "fitting room"
+     (sticky lineup on the left, choices on the right), then a full-width reception board.
+     Single light theme on purpose: colour swatches need a fixed, neutral ground to be judged. */
+  :root {
+    --navy: #0d1b30;
+    --blue-deep: #26374a;
+    --blue: #5c7994;
+    --blue-soft: #8ba3b9;
+    --gold: #c6a256;
+    --gold-dark: #9a7a35;
+    --ivory: #f7f8f7;
+    --paper: #ffffff;
+    --wash: #eef1f3;
+    --text: #2c3540;
+    --muted: #66717c;
+    --line: #dbe2e8;
+    --on-navy: #c9d2dc;
+    --warn: #7a4f12;
+    --warn-bg: #fbf1de;
+    --stop: #a8473a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --soft: 'Cormorant Garamond', Georgia, serif;
+    --script: 'Great Vibes', 'Cormorant Garamond', cursive;
+    --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--ivory); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.55; font-weight: 400; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  a { color: var(--blue); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  /* ---------- hero ---------- */
+  .hero { background: var(--navy); color: var(--on-navy); }
+  .hero .wrap { padding-block: 44px 36px; }
+  .kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dark); margin: 0; }
+  .hero .kicker { color: var(--gold); }
+  .hero h1 { font-family: var(--script); font-weight: 400; font-size: clamp(46px, 8vw, 74px); line-height: 1.05; color: var(--gold); margin: 6px 0 0; }
+  .hero .sub { font-family: var(--serif); font-size: clamp(20px, 3vw, 26px); color: #fff; margin: 4px 0 0; }
+  .hero .lead { font-family: var(--soft); font-size: 20px; line-height: 1.45; max-width: 60ch; margin: 14px 0 0; }
+  .set { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; list-style: none; }
+  .set li { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 12px 6px 8px; border: 1px solid rgba(201, 210, 220, .25); border-radius: 99px; }
+  .set .dot { width: 14px; height: 14px; }
+
+  /* ---------- sections ---------- */
+  section { padding-block: 48px; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 4vw, 34px); margin: 4px 0 0; line-height: 1.2; }
+  .intro { color: var(--muted); max-width: 64ch; margin: 8px 0 0; }
+
+  .studio { display: grid; gap: 32px; margin-top: 26px; }
+  @media (min-width: 920px) {
+    .studio { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: start; }
+    .stage { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+  }
+  .stage { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px 14px 18px; }
+  .lineup { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px 6px; }
+  .row-label { grid-column: 1 / -1; font-family: var(--soft); font-style: italic; font-size: 17px; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-top: 6px; }
+  .row-label:not(:first-child) { margin-top: 18px; }
+  .fig { text-align: center; min-width: 0; margin: 0; }
+  .fig svg { width: 100%; height: auto; max-height: 190px; display: block; }
+  .fig b { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; margin-top: 2px; }
+  .fig span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+
+  .panel { display: grid; gap: 12px; }
+  .panel + .panel { margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--line); }
+  .panel h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0; }
+  .hint { color: var(--muted); margin: 0; max-width: 62ch; }
+  .sublabel { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+
+  .opts { display: grid; gap: 10px; }
+  .opt { position: relative; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+  .opt:hover { border-color: var(--blue-soft); }
+  .opt.is-on { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+  .opt:has(input:focus-visible), .pill:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
+  input.sr { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+  .opt-sw { display: flex; flex-direction: column; height: 60px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .opt-sw i { flex: 1; display: block; }
+  .opt-txt { min-width: 0; }
+  .opt-name { font-weight: 500; font-size: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+  .rec { font-style: normal; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); border: 1px solid var(--gold); border-radius: 99px; padding: 1px 8px; font-weight: 500; }
+  .opt-desc { display: block; color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .opt-link { display: inline-block; margin-top: 7px; font-size: 13px; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 9px; border: 1px solid var(--line); border-radius: 99px; background: var(--paper); cursor: pointer; font-size: 14px; transition: border-color .15s, background .15s; }
+  .pill:hover { border-color: var(--blue-soft); }
+  .pill.is-on { border-color: var(--gold); background: #fbf7ee; }
+  .pill.text-only { padding-left: 14px; }
+  .dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(20, 30, 45, .18); flex: none; display: inline-block; }
+
+  .guest-note { font-size: 14px; color: var(--warn); background: var(--warn-bg); border-radius: 8px; padding: 9px 12px; margin: 0; }
+  .jump { font-size: 14px; text-decoration: none; border-bottom: 1px solid currentColor; justify-self: start; }
+
+  /* ---------- guest dress code card ---------- */
+  .dc { margin-top: 56px; }
+  .dc-card { background: var(--paper); border: 1px solid var(--gold); box-shadow: inset 0 0 0 7px var(--paper), inset 0 0 0 8px var(--gold); border-radius: 4px; padding: 36px 22px 30px; text-align: center; max-width: 860px; margin: 20px auto 0; }
+  .dc-card .script { font-family: var(--script); color: var(--gold-dark); font-size: 46px; line-height: 1; margin: 0; }
+  .dc-card .code { font-family: var(--serif); font-size: 21px; margin: 8px 0 0; }
+  .dc-card .pal { font-family: var(--soft); font-style: italic; font-size: 18px; color: var(--muted); margin: 2px 0 0; }
+  .dc-swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+  .dc-swatches li { min-width: 0; }
+  .dc-swatches svg { width: 100%; height: auto; max-height: 130px; display: block; }
+  .dc-chip { display: block; height: 24px; width: min(64px, 100%); margin: 6px auto 0; border-radius: 99px; border: 1px solid rgba(20, 30, 45, .15); }
+  .dc-name { display: block; font-size: 13px; margin-top: 6px; line-height: 1.25; }
+  .dc-hex { display: block; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+  .dc-rules { display: grid; gap: 14px; margin-top: 26px; text-align: left; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 700px) { .dc-rules { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .dc-rules > div { border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; color: var(--muted); min-width: 0; }
+  .dc-rules b { display: block; color: var(--text); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 4px; }
+  .dc-avoid { display: grid; gap: 6px; margin: 2px 0 6px; padding: 0; list-style: none; }
+  .dc-avoid li { display: flex; align-items: center; gap: 8px; }
+  .dot.no { position: relative; }
+  .dot.no::after { content: ''; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1.5px; margin-left: -.75px; background: var(--stop); transform: rotate(45deg); }
+  .dc-tag { font-family: var(--soft); font-style: italic; color: var(--gold-dark); margin: 24px 0 0; font-size: 19px; }
+  .dc-actions { display: flex; flex-direction: column; align-items: center; margin-top: 18px; }
+
+  /* ---------- picks ---------- */
+  .picks { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; margin-top: 20px; }
+  @media (min-width: 760px) { .picks { grid-template-columns: minmax(0, 1fr) auto; align-items: start; } }
+  .summary { font-family: var(--sans); white-space: pre-wrap; overflow-wrap: anywhere; background: var(--wash); padding: 16px 18px; border-radius: 10px; font-size: 14px; line-height: 1.7; margin: 0; }
+  .btn { font-family: var(--sans); font-size: 14px; letter-spacing: .06em; background: var(--blue-deep); color: #fff; border: 0; border-radius: 99px; padding: 11px 22px; cursor: pointer; }
+  .btn:hover { background: var(--navy); }
+  .copy-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; min-height: 1.3em; }
+
+  /* ---------- reception ---------- */
+  .band { background: var(--wash); }
+  .concepts { margin-top: 22px; }
+  .concept-head { margin-top: 22px; display: grid; gap: 4px; }
+  .concept-head h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+  .concept-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+  .rec-grid { display: grid; gap: 20px; margin-top: 18px; }
+  @media (min-width: 900px) { .rec-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
+  .scene svg { display: block; width: 100%; height: auto; border-radius: 10px; }
+  .roles { display: flex; height: 22px; border-radius: 6px; overflow: hidden; margin-top: 16px; border: 1px solid var(--line); }
+  .roles i { display: block; height: 100%; }
+  .role-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px 14px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 13px; }
+  .role-legend li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 8px; align-items: start; }
+  .role-legend .dot { margin-top: 3px; grid-row: span 2; }
+  .role-legend b { font-weight: 500; }
+  .role-legend span { color: var(--muted); grid-column: 2; }
+  .pct { font-variant-numeric: tabular-nums; color: var(--gold-dark); font-weight: 500; }
+  .venue img { display: block; width: 100%; max-width: 100%; aspect-ratio: 1096 / 562; object-fit: cover; border-radius: 10px; }
+  .venue h4 { font-family: var(--serif); font-weight: 500; font-size: 18px; margin: 12px 0 4px; }
+  .venue p { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+  .venue a { font-size: 13px; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  .elements { display: grid; gap: 12px; margin-top: 26px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 620px) { .elements { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1020px) { .elements { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .el h4 { font-family: var(--serif); font-weight: 500; font-size: 17px; margin: 0 0 6px; }
+  .el p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  .flow { margin-top: 34px; }
+  .flow h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0 0 12px; }
+  .flow ol { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 10px; }
+  @media (min-width: 900px) { .flow ol { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .flow li { counter-increment: step; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px; font-size: 14px; color: var(--muted); min-width: 0; }
+  .flow li::before { content: counter(step); display: block; font-family: var(--serif); font-size: 22px; color: var(--gold-dark); line-height: 1; margin-bottom: 6px; }
+  .flow li b { display: block; color: var(--text); font-weight: 500; margin-bottom: 2px; }
+
+  footer { padding-block: 28px 40px; color: var(--muted); font-size: 13px; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">February 26, 2027 &middot; Dusty blue &amp; gold</p>
+    <h1>Khen &amp; Tine</h1>
+    <p class="sub">Wedding colors and reception design</p>
+    <p class="lead">Pick the groom's tux, the sponsors' colors and the guest palette, and the whole lineup changes with you. The reception design for Water Nymph is further down.</p>
+    <ul class="set" aria-label="Already decided">
+      <li><span class="dot" style="background:#fdfcf8"></span>Bride &middot; white gown</li>
+      <li><span class="dot" style="background:#8ba3b9"></span>Bridesmaids &middot; dusty blue</li>
+      <li><span class="dot" style="background:#1d2b45"></span>Groom &middot; midnight navy tux</li>
+      <li><span class="dot" style="background:#17191c"></span>Groomsmen &middot; black tux</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="attire">
+    <div class="wrap">
+      <p class="kicker">Attire</p>
+      <h2>The lineup</h2>
+      <p class="intro">Choose an option on the right and the figures update. The bride, groom, bridesmaids and groomsmen are already set. Everything else is a suggestion, and the one marked "Our pick" is where I'd start. "See photos" opens real outfit references on Pinterest.</p>
+
+      <div class="studio">
+        <div class="stage">
+          <div class="lineup" id="lineup"></div>
+        </div>
+
+        <div>
+          <div class="panel" id="p-groom">
+            <h3>Groom's tux</h3>
+            <p class="hint">You chose midnight navy. It stands out next to the black-tux groomsmen and ties into the dusty blue. The other options stay here for comparison.</p>
+            <div class="opts" id="opts-groom"></div>
+            <p class="sublabel">Your bow tie &amp; pocket square</p>
+            <div class="pills" id="pills-accent"></div>
+          </div>
+
+          <div class="panel" id="p-gm">
+            <h3>Groomsmen's bow ties</h3>
+            <p class="hint">The black tux stays. A dusty blue bow tie links the groomsmen to the bridesmaids when they walk in pairs.</p>
+            <div class="pills" id="pills-gmtie"></div>
+          </div>
+
+          <div class="panel" id="p-sponsors">
+            <h3>Principal sponsors</h3>
+            <p class="hint">Give your ninongs and ninangs their own color so they read as one group in photos, separate from the entourage and the guests. A Filipiniana or terno gown with butterfly sleeves suits the ninangs.</p>
+            <div class="opts" id="opts-sponsors"></div>
+            <p class="sublabel">Ninongs wear</p>
+            <div class="pills" id="pills-ninong"></div>
+          </div>
+
+          <div class="panel" id="p-guests">
+            <h3>Guests</h3>
+            <p class="hint">A palette with a few colors gives guests room to choose what they already own.</p>
+            <p class="guest-note" id="guest-note" hidden></p>
+            <div class="opts" id="opts-guests"></div>
+            <a class="jump" href="#guest-dress-code">See the guest dress code card &#8595;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dc" id="guest-dress-code">
+        <p class="kicker">For your guests</p>
+        <h2>Guest dress code</h2>
+        <p class="intro">This card follows the guest palette you pick above. Screenshot it for the invitation group chat, or copy the text.</p>
+        <div class="dc-card" id="dc-card"></div>
+        <div class="dc-actions">
+          <button class="btn" type="button" data-copy="dc">Copy dress code</button>
+          <p class="copy-note" id="dc-note" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="picks">
+        <div>
+          <p class="kicker">Your picks</p>
+          <pre class="summary" id="summary"></pre>
+        </div>
+        <div>
+          <button class="btn" type="button" data-copy="picks">Copy picks</button>
+          <p class="copy-note" id="copy-note" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reception" class="band">
+    <div class="wrap">
+      <p class="kicker">Reception &middot; Water Nymph Resort, Events Venue &middot; 4:00 PM</p>
+      <h2>Reception design</h2>
+      <p class="intro">Three directions built on your dusty blue and gold. Switch between them to see the table, the color split and the details.</p>
+
+      <div class="pills concepts" id="pills-concept"></div>
+
+      <div class="concept-head" id="concept-head"></div>
+
+      <div class="rec-grid">
+        <div class="card">
+          <div class="scene" id="scene"></div>
+          <div class="roles" id="roles" aria-hidden="true"></div>
+          <ul class="role-legend" id="role-legend"></ul>
+        </div>
+        <div class="card venue">
+          <img src="../assets/reception.jpg" alt="Front of Water Nymph Resort Events Venue: two floors with warm wood slats, stone pillars and a gold sign">
+          <h4>Working with the venue</h4>
+          <p>The building already has warm wood slats and stone, so gold accents and warm lighting will sit well with it.</p>
+          <p>Sunset is around 6 PM, so the reception starts in daylight and ends at night. Plan decor that works in both.</p>
+          <p>Before booking a stylist, ask the venue about ceiling height, wall color, and whether drapery, open-flame candles and string lights are allowed.</p>
+          <a id="concept-link" href="#" target="_blank" rel="noopener">See photos of this look &#8599;</a>
+        </div>
+      </div>
+
+      <div class="elements" id="elements"></div>
+
+      <div class="flow">
+        <h3>How guests move through the room</h3>
+        <ol>
+          <li><b>Entrance</b>Welcome sign and floral arrangement, so the first photo of the night is on-theme.</li>
+          <li><b>Registry &amp; photo wall</b>Seating chart, guest book and a backdrop for photos while guests wait between the 2 PM ceremony and 4 PM reception.</li>
+          <li><b>Guest tables</b>Arranged around the dance floor, ninongs and ninangs and family closest to the front.</li>
+          <li><b>Stage &amp; couple's table</b>Facing the entrance, so every guest sees you when they walk in.</li>
+          <li><b>Cake &amp; sweets</b>Beside the stage, so the cake ends up in the background of your program photos.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Colors look different on every screen. Check fabric and linen swatches in person, ideally under the venue's lighting, before ordering.</div>
+</footer>
+
+<script>
+(function () {
+  var SKIN = '#c8966e', HAIR = '#2b211c', LINE = 'rgba(28,38,52,.24)';
+  var BM = '#8ba3b9', BRIDE = '#fdfcf8';
+
+  var GROOM = {
+    navy: { name: 'Midnight navy', jacket: '#1d2b45', lapel: '#131d31', pants: '#1d2b45', chosen: true,
+      desc: 'You stand out from the black-tux groomsmen and stay just as formal. Navy ties straight into the dusty blue motif and looks richer than black in daytime photos.',
+      q: 'navy tuxedo groom black tuxedo groomsmen' },
+    black: { name: 'Classic black', jacket: '#17191c', lapel: '#0b0c0e', pants: '#17191c',
+      desc: 'Timeless and matches the groomsmen. Set yourself apart with a different bow tie, a gold pocket square and a white boutonniere.',
+      q: 'black tuxedo groom dusty blue wedding' },
+    ivory: { name: 'Ivory dinner jacket', jacket: '#ece4d3', lapel: '#e1d5bf', pants: '#17191c',
+      desc: 'The classic way to stand out next to black tuxes. It shows sweat and stains easily, and you should check it beside the bride\'s gown so the two whites don\'t clash.',
+      q: 'ivory dinner jacket groom black groomsmen' },
+    dusty: { name: 'Dusty blue', jacket: '#6d88a1', lapel: '#5c7994', pants: '#6d88a1',
+      desc: 'Bold and on-theme, matching the bridesmaids. Less formal than navy or black, and it can look busy next to the blue gowns in group photos.',
+      q: 'dusty blue tuxedo groom' },
+    charcoal: { name: 'Charcoal grey', jacket: '#3b4047', lapel: '#2b2f35', pants: '#3b4047',
+      desc: 'Softer than black and different enough up close. In photos it can read as a faded black next to the groomsmen.',
+      q: 'charcoal grey tuxedo groom' }
+  };
+
+  var ACC = {
+    black: { name: 'Black', hex: '#141414' },
+    gold: { name: 'Gold', hex: '#c6a256' },
+    blue: { name: 'Dusty blue', hex: '#8ba3b9' }
+  };
+
+  var SPONSORS = {
+    champagne: { name: 'Champagne & gold', rec: true, ninang: '#dcc8a4', ninangAccent: '#c6a256', ninangName: 'Champagne',
+      suit: '#26374a', suitName: 'Navy suit', tie: '#c6a256',
+      desc: 'Warm and elegant, and it echoes the gold on your invitation. Easy to tell apart from the bridesmaids\' blue and the bride\'s white, and flattering on most skin tones.',
+      q: 'champagne filipiniana terno gown ninang' },
+    navy: { name: 'Midnight navy', ninang: '#2b3d55', ninangAccent: '#c6a256', ninangName: 'Navy',
+      suit: '#1c2534', suitName: 'Navy suit', tie: '#8ba3b9',
+      desc: 'Rich and formal, and it fits the motif. In photos the ninangs will sit close to the dark tuxes of the groom\'s side.',
+      q: 'navy blue filipiniana gown ninang' },
+    mauve: { name: 'Dusty mauve', ninang: '#b3919a', ninangAccent: '#8c6f78', ninangName: 'Dusty mauve',
+      suit: '#3a3f45', suitName: 'Charcoal suit', tie: '#b3919a',
+      desc: 'A soft, warm contrast to the dusty blue. Good if you want the sponsors to stand out clearly as their own group.',
+      q: 'mauve filipiniana terno gown' },
+    silver: { name: 'Silver & pewter', ninang: '#bfc4ca', ninangAccent: '#8f969e', ninangName: 'Silver',
+      suit: '#555b63', suitName: 'Grey suit', tie: '#8ba3b9',
+      desc: 'Cool and quiet. Silver grey is already in the guest palette, so the sponsors may blend in with the guests.',
+      q: 'silver grey filipiniana gown ninang' }
+  };
+
+  var NINONG = { barong: { name: 'Barong Tagalog' }, suit: { name: 'Dark suit' } };
+
+  var GUESTS = {
+    invite: { name: 'Your invitation palette', rec: true, woman: 0, man: 1,
+      colors: [['Dusty blue', '#5c7994'], ['Blue grey', '#7a8b99'], ['Silver grey', '#b7bdc4'], ['Cool beige', '#d6cfc3'], ['Taupe', '#8c7b6c']],
+      desc: 'Already on your invitation site, so some guests may have started planning. Keeping it avoids confusion.',
+      q: 'dusty blue beige taupe wedding guest attire' },
+    neutrals: { name: 'Neutrals with a touch of blue', woman: 0, man: 4,
+      colors: [['Champagne', '#e3d3b5'], ['Cool beige', '#d6cfc3'], ['Taupe', '#8c7b6c'], ['Blue grey', '#7a8b99'], ['Navy', '#26374a']],
+      desc: 'Keeps most guests out of dusty blue so the bridesmaids stand out. You would need to update the swatches on the invitation site.',
+      q: 'champagne beige taupe wedding guest outfit' },
+    blues: { name: 'Shades of blue', woman: 0, man: 3,
+      colors: [['Powder blue', '#b9cad8'], ['Dusty blue', '#5c7994'], ['Steel', '#7a8b99'], ['Navy', '#26374a'], ['Silver', '#b7bdc4']],
+      desc: 'Everyone in blues makes the motif strong in wide shots. The bridesmaids may blend into the crowd.',
+      q: 'blue wedding guest attire dusty blue navy' },
+    garden: { name: 'Garden tones', woman: 1, man: 4,
+      colors: [['Sage', '#a8b5a0'], ['Dusty blue', '#8ba3b9'], ['Eucalyptus', '#7f9183'], ['Cool beige', '#d6cfc3'], ['Blue grey', '#7a8b99']],
+      desc: 'Pairs with the Garden Romance reception. Greens and blues look natural against the venue\'s wood. You would need to update the invitation site.',
+      q: 'sage green dusty blue wedding guest attire' }
+  };
+
+  var CONCEPTS = {
+    classic: {
+      name: 'Classic Dusty Blue & Gold', tag: 'Matches your invitation', rec: true,
+      desc: 'Ivory and white as the base, dusty blue in the fabrics and blooms, and gold for the shine. This is the invitation site brought into the room.',
+      q: 'dusty blue and gold wedding reception',
+      roles: [['Ivory & white', '#f4f1ea', 60, 'Linens, walls, most flowers'], ['Dusty blue', '#8ba3b9', 30, 'Runners, napkins, draping, blue blooms'], ['Gold', '#c6a256', 10, 'Chargers, flatware, chairs, signage']],
+      scene: { wall: '#f3f0ea', drape: '#8ba3b9', decor: 'swag', lights: false, floor: '#e4ded3', cloth: '#fbfaf6', overlay: '#8ba3b9', charger: '#c6a256', napkin: '#8ba3b9', chair: '#c6a256', chairStyle: 'tiffany', metal: '#c6a256', flowers: ['#ffffff', '#f4ece1', '#9fb4c8', '#7d98b3', '#ffffff'], green: '#7f9183', tall: true, candles: 'taper' },
+      el: [
+        ['Entrance', 'White acrylic welcome sign with gold lettering on a gold easel, with arrangements of white roses and blue hydrangea on both sides.'],
+        ['Stage & backdrop', 'Ivory drape with dusty blue swags, a gold "K & T" monogram in the middle, and a floral arch of white roses, blue hydrangea, delphinium and eucalyptus.'],
+        ['Couple\'s table', 'Long presidential table for you, your parents and the principal sponsors. Ivory cloth, dusty blue chiffon overlay, a low floral garland down its length and gold candelabras at each end.'],
+        ['Guest tables', 'Round tables in ivory linen, dusty blue napkins tied with gold ribbon, gold chargers and flatware, and gold tiffany chairs.'],
+        ['Centerpieces', 'Alternate tall and low. Tall gold stands keep blooms above eye level so guests can still talk across the table.'],
+        ['Lighting', 'Warm white only. Blue uplights make dusty blue look grey and cold on camera. Light the taper candles once the sun sets.'],
+        ['Cake', 'Three tiers in white with a dusty blue watercolor wash on one tier, gold leaf and fresh white roses.'],
+        ['Details', 'Menu cards on dusty blue paper with gold foil, a name card at each seat, giveaways wrapped in white with a dusty blue ribbon.']
+      ]
+    },
+    garden: {
+      name: 'Garden Romance', tag: 'Suits the venue\'s wood and stone',
+      desc: 'Lots of greenery, natural wood and soft light, with dusty blue in the flowers and napkins. Leans into the wood slats already on the building.',
+      q: 'dusty blue sage greenery wedding reception wood',
+      roles: [['Ivory', '#f3efe6', 50, 'Linens and white blooms'], ['Sage & greenery', '#9fae96', 30, 'Garlands, runners, napkins'], ['Dusty blue', '#8ba3b9', 15, 'Blue thistle, hydrangea, stationery'], ['Gold', '#c6a256', 5, 'Small touches: cutlery, frames']],
+      scene: { wall: '#e8ece3', drape: null, decor: 'leaves', lights: true, floor: '#d8ccb6', cloth: '#f7f4ec', overlay: '#a8b5a0', charger: '#c9b48a', napkin: '#a8b5a0', chair: '#9a7350', chairStyle: 'cross', metal: '#c6a256', flowers: ['#ffffff', '#f4ede2', '#8ba3b9', '#ffffff', '#b9cad8'], green: '#6f8a68', tall: false, candles: 'votive' },
+      el: [
+        ['Entrance', 'Wooden easel with a greenery-framed welcome sign, and potted olive or ficus trees lining the walkway.'],
+        ['Stage & backdrop', 'Greenery wall of eucalyptus and ferns, white and blue blooms clustered in one corner, and a wooden or white neon "K & T" monogram.'],
+        ['Couple\'s table', 'Long wooden table with no cloth, a full greenery garland down the middle and pillar candles in glass.'],
+        ['Guest tables', 'Mix of round tables in ivory linen and long wooden tables. Sage napkins, rattan chargers and wooden cross-back chairs.'],
+        ['Centerpieces', 'Low and loose: eucalyptus, white roses, blue thistle and baby\'s breath in bud vases and wooden boxes.'],
+        ['Lighting', 'String lights or hanging Edison bulbs across the ceiling plus votive candles. Warm and relaxed after sunset.'],
+        ['Cake', 'Semi-naked cake dressed with eucalyptus and white and blue flowers.'],
+        ['Details', 'Handmade-paper menus, seeded-paper name cards and small potted succulents as giveaways.']
+      ]
+    },
+    glam: {
+      name: 'Evening Glam', tag: 'Made for after sunset',
+      desc: 'Navy as the base, gold everywhere, and white flowers that glow against the dark. Most dramatic once the lights go down.',
+      q: 'navy and gold wedding reception candles',
+      roles: [['Navy', '#26374a', 40, 'Draping, linens, signage'], ['Ivory & white', '#f4f1ea', 30, 'Flowers, alternate linens, cake'], ['Dusty blue', '#8ba3b9', 15, 'Napkins, accent blooms'], ['Gold', '#c6a256', 15, 'Chargers, candelabras, chairs, foil']],
+      scene: { wall: '#1f2d42', drape: '#2b3d55', decor: 'pleats', lights: true, floor: '#162030', cloth: '#26374a', overlay: null, charger: '#c6a256', napkin: '#8ba3b9', chair: '#c6a256', chairStyle: 'tiffany', cushion: '#26374a', metal: '#d2b06a', flowers: ['#ffffff', '#f8f5ef', '#ebe6dc', '#ffffff'], green: '#5f7566', tall: true, candles: 'taper' },
+      el: [
+        ['Entrance', 'Navy welcome board with gold script and candle lanterns along the entry.'],
+        ['Stage & backdrop', 'Navy draped backdrop with a gold frame or sequin panel, white florals and a lit "K & T" marquee monogram.'],
+        ['Couple\'s table', 'Navy velvet cloth, gold candelabras and tall white florals.'],
+        ['Guest tables', 'Alternate navy and ivory linens, gold chargers, dusty blue napkins, gold tiffany chairs with navy cushions.'],
+        ['Centerpieces', 'Tall gold candelabras with white orchids and roses spilling down, surrounded by votives.'],
+        ['Lighting', 'Dim house lights with warm pinspots on each centerpiece, plenty of candles and a few gold uplights.'],
+        ['Cake', 'One navy or dusty blue tier with gold leaf, the rest white with sugar flowers.'],
+        ['Details', 'Gold foil on navy menus, gold-rimmed glassware, and giveaways in navy boxes with gold ribbon.']
+      ]
+    }
+  };
+
+  var DEFAULTS = { groom: 'navy', accent: 'gold', gmtie: 'blue', sponsors: 'champagne', ninong: 'barong', guests: 'invite', concept: 'classic' };
+  var SOURCES = { groom: GROOM, accent: ACC, gmtie: ACC, sponsors: SPONSORS, ninong: NINONG, guests: GUESTS, concept: CONCEPTS };
+  var KEY = 'kt-wedding-colors-v1';
+  var dcText = '';
+  var state = Object.assign({}, DEFAULTS);
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.keys(DEFAULTS).forEach(function (k) { if (saved[k] && SOURCES[k][saved[k]]) state[k] = saved[k]; });
+  } catch (e) {}
+  state.groom = 'navy'; /* decided: always open on the groom's choice */
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  /* ---------- helpers ---------- */
+  function pin(q) { return 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(q); }
+  function shade(hex, amt) {
+    var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    var t = amt < 0 ? 0 : 255, p = Math.abs(amt);
+    r = Math.round(r + (t - r) * p); g = Math.round(g + (t - g) * p); b = Math.round(b + (t - b) * p);
+    return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+  }
+  function svg(inner, label) {
+    return '<svg viewBox="0 0 100 230" role="img" aria-label="' + label + '">' + inner + '</svg>';
+  }
+  function headMan() {
+    return '<circle cx="50" cy="25" r="12" fill="' + SKIN + '"/>' +
+      '<path d="M38 24 Q37 11 50 11 Q63 11 62 24 Q59 16 50 17 Q41 16 38 24Z" fill="' + HAIR + '"/>';
+  }
+  function headWoman() {
+    return '<circle cx="50" cy="11" r="6" fill="' + HAIR + '"/>' +
+      '<circle cx="50" cy="25" r="12" fill="' + SKIN + '"/>' +
+      '<path d="M38 25 Q37 12 50 12 Q63 12 62 25 Q58 17 50 18 Q42 17 38 25Z" fill="' + HAIR + '"/>';
+  }
+  function bouquet(cx, cy, colors) {
+    var s = '<ellipse cx="' + (cx - 7) + '" cy="' + (cy + 3) + '" rx="6" ry="2.4" fill="#6f8a68" transform="rotate(-30 ' + (cx - 7) + ' ' + (cy + 3) + ')"/>' +
+      '<ellipse cx="' + (cx + 7) + '" cy="' + (cy + 3) + '" rx="6" ry="2.4" fill="#6f8a68" transform="rotate(30 ' + (cx + 7) + ' ' + (cy + 3) + ')"/>';
+    var pts = [[0, 0], [-5, -3], [5, -3], [-4, 4], [4, 4], [0, -6]];
+    pts.forEach(function (p, i) {
+      s += '<circle cx="' + (cx + p[0]) + '" cy="' + (cy + p[1]) + '" r="3.6" fill="' + colors[i % colors.length] + '" stroke="' + LINE + '" stroke-width=".5"/>';
+    });
+    return s;
+  }
+
+  /* kind: tux | suit | barong | shirt */
+  function man(o) {
+    var st = ' stroke="' + LINE + '" stroke-width=".8"';
+    var top = o.jacket, hem = o.kind === 'barong' ? 130 : 121;
+    var s = '';
+    s += '<path d="M31 116 L69 116 L67 213 L53.5 213 L50 134 L46.5 213 L33 213 Z" fill="' + o.pants + '"' + st + '/>';
+    s += '<rect x="31" y="211" width="16" height="6" rx="2" fill="#141414"/><rect x="53" y="211" width="16" height="6" rx="2" fill="#141414"/>';
+    s += '<rect x="45.5" y="34" width="9" height="10" fill="' + SKIN + '"/>';
+    s += '<circle cx="20" cy="115" r="4" fill="' + SKIN + '"/><circle cx="80" cy="115" r="4" fill="' + SKIN + '"/>';
+    s += '<path d="M31 46 L22 50 L16 112 L24 114 L30 72 Z" fill="' + top + '"' + st + '/>';
+    s += '<path d="M69 46 L78 50 L84 112 L76 114 L70 72 Z" fill="' + top + '"' + st + '/>';
+    s += '<path d="M31 46 Q50 40 69 46 L72 ' + hem + ' L28 ' + hem + ' Z" fill="' + top + '"' + st + '/>';
+    if (o.kind === 'tux' || o.kind === 'suit') {
+      var lapel = o.lapel || shade(top, -0.18);
+      s += '<path d="M43 43 L57 43 L50 78 Z" fill="' + (o.shirt || '#fff') + '"/>';
+      s += '<path d="M43 43 L50 78 L46 85 L36 50 Z" fill="' + lapel + '"/><path d="M57 43 L50 78 L54 85 L64 50 Z" fill="' + lapel + '"/>';
+      s += '<path d="M50 80 L50 121" stroke="rgba(0,0,0,.18)" stroke-width=".8"/>';
+      s += '<circle cx="50" cy="92" r="1.6" fill="' + lapel + '"/>';
+      if (o.tieStyle === 'long') {
+        s += '<path d="M48.3 46 L51.7 46 L52.6 70 L50 74 L47.4 70 Z" fill="' + o.tie + '"/>';
+      } else {
+        s += '<path d="M44 45 L50 48.5 L56 45 L56 52 L50 48.5 L44 52 Z" fill="' + o.tie + '"/><circle cx="50" cy="48.5" r="1.3" fill="' + shade(o.tie, -0.2) + '"/>';
+      }
+      if (o.square) s += '<path d="M57 66 L65 64 L64.5 68.5 L57.5 69 Z" fill="' + o.square + '"/>';
+      if (o.bout) s += '<path d="M38.5 63 l-1.6 6" stroke="#6f8a68" stroke-width="1"/><circle cx="38.5" cy="61" r="2.8" fill="#fff" stroke="' + LINE + '" stroke-width=".5"/><circle cx="36.6" cy="63" r="1.7" fill="' + o.bout + '"/>';
+    } else if (o.kind === 'barong') {
+      var emb = shade(top, -0.14);
+      s += '<path d="M44.5 41 L50 46 L55.5 41 L56 45 L50 50 L44 45 Z" fill="' + shade(top, -0.06) + '"' + st + '/>';
+      s += '<path d="M41 52 L41 126 M59 52 L59 126" stroke="' + emb + '" stroke-width="1" stroke-dasharray="2 2"/>';
+      s += '<path d="M44 58 q6 6 12 0 M44 70 q6 6 12 0 M44 82 q6 6 12 0" fill="none" stroke="' + emb + '" stroke-width=".9"/>';
+      [55, 67, 79, 91, 103].forEach(function (y) { s += '<circle cx="50" cy="' + y + '" r="1" fill="' + shade(top, -0.3) + '"/>'; });
+      s += '<path d="M18 104 L25 106" stroke="' + emb + '" stroke-width="1"/><path d="M82 104 L75 106" stroke="' + emb + '" stroke-width="1"/>';
+    } else if (o.kind === 'shirt') {
+      s += '<path d="M44 42 L50 49 L56 42 L57 47 L50 53 L43 47 Z" fill="' + shade(top, 0.15) + '"' + st + '/>';
+      s += '<path d="M50 53 L50 121" stroke="rgba(0,0,0,.15)" stroke-width=".8"/>';
+    }
+    s += headMan();
+    return s;
+  }
+
+  /* style: gown | terno | bride | midi */
+  function woman(o) {
+    var st = ' stroke="' + LINE + '" stroke-width=".8"';
+    var d = o.dress, s = '';
+    if (o.style === 'bride') {
+      s += '<path d="M45 13 Q24 70 15 214 Q27 220 36 214 Q40 90 53 14 Z" fill="#ffffff" fill-opacity=".75" stroke="' + LINE + '" stroke-width=".6"/>';
+    }
+    s += '<rect x="45.5" y="34" width="9" height="10" fill="' + SKIN + '"/>';
+    s += '<path d="M38 48 L31 54 L27 104 L32 106 L38 68 Z" fill="' + SKIN + '"/><path d="M62 48 L69 54 L73 104 L68 106 L62 68 Z" fill="' + SKIN + '"/>';
+    if (o.style === 'midi') {
+      s += '<rect x="41" y="168" width="6" height="42" fill="' + SKIN + '"/><rect x="53" y="168" width="6" height="42" fill="' + SKIN + '"/>';
+      s += '<path d="M39 210 h9 v5 h-11 z M52 210 h9 l2 5 h-11 z" fill="' + shade(d, -0.35) + '"/>';
+      s += '<path d="M40 86 L60 86 L71 172 L29 172 Z" fill="' + d + '"' + st + '/>';
+    } else {
+      var w = o.style === 'bride' ? 92 : 84, wl = 100 - w;
+      s += '<path d="M40 86 L60 86 Q76 150 ' + w + ' 219 Q50 226 ' + wl + ' 219 Q24 150 40 86 Z" fill="' + d + '"' + st + '/>';
+      s += '<path d="M50 92 L50 222 M45 92 Q36 160 30 221 M55 92 Q64 160 70 221" fill="none" stroke="rgba(0,0,0,.07)" stroke-width="1"/>';
+    }
+    s += '<path d="M38 46 Q50 42 62 46 L60 89 L40 89 Z" fill="' + d + '"' + st + '/>';
+    if (o.style === 'terno') {
+      s += '<path d="M39 47 Q29 31 25 46 Q29 56 39 55 Z" fill="' + d + '"' + st + '/>';
+      s += '<path d="M61 47 Q71 31 75 46 Q71 56 61 55 Z" fill="' + d + '"' + st + '/>';
+    }
+    if (o.accent) s += '<rect x="39.5" y="84" width="21" height="4" rx="1" fill="' + o.accent + '"/>';
+    if (o.bouquet) s += bouquet(50, 98, o.bouquet);
+    s += headWoman();
+    return s;
+  }
+
+  function fig(label, sub, inner) {
+    return '<figure class="fig">' + svg(inner, label + ', ' + sub) + '<figcaption><b>' + label + '</b><span>' + sub + '</span></figcaption></figure>';
+  }
+
+  /* ---------- builders ---------- */
+  function radio(group, key) {
+    return '<input class="sr" type="radio" name="' + group + '" id="' + group + '-' + key + '" value="' + key + '">';
+  }
+  function optCard(group, key, item, swatches) {
+    return '<label class="opt" for="' + group + '-' + key + '">' + radio(group, key) +
+      '<span class="opt-sw">' + swatches.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</span>' +
+      '<span class="opt-txt"><span class="opt-name">' + item.name + (item.chosen ? '<em class="rec">Your choice</em>' : item.rec ? '<em class="rec">Our pick</em>' : '') + '</span>' +
+      '<span class="opt-desc">' + item.desc + '</span>' +
+      '<a class="opt-link" href="' + pin(item.q) + '" target="_blank" rel="noopener">See photos &#8599;</a></span></label>';
+  }
+  function pill(group, key, name, color, rec) {
+    return '<label class="pill' + (color ? '' : ' text-only') + '" for="' + group + '-' + key + '">' + radio(group, key) +
+      (color ? '<span class="dot" style="background:' + color + '"></span>' : '') + name + (rec ? ' <em class="rec">Our pick</em>' : '') + '</label>';
+  }
+
+  document.getElementById('opts-groom').innerHTML = Object.keys(GROOM).map(function (k) {
+    var g = GROOM[k]; return optCard('groom', k, g, [g.jacket, g.lapel, g.pants]);
+  }).join('');
+  document.getElementById('opts-sponsors').innerHTML = Object.keys(SPONSORS).map(function (k) {
+    var p = SPONSORS[k]; return optCard('sponsors', k, p, [p.ninang, p.ninangAccent, p.suit]);
+  }).join('');
+  document.getElementById('opts-guests').innerHTML = Object.keys(GUESTS).map(function (k) {
+    var p = GUESTS[k]; return optCard('guests', k, p, p.colors.map(function (c) { return c[1]; }));
+  }).join('');
+  document.getElementById('pills-accent').innerHTML = Object.keys(ACC).map(function (k) { return pill('accent', k, ACC[k].name, ACC[k].hex); }).join('');
+  document.getElementById('pills-gmtie').innerHTML = Object.keys(ACC).map(function (k) { return pill('gmtie', k, ACC[k].name, ACC[k].hex, k === 'blue'); }).join('');
+  document.getElementById('pills-ninong').innerHTML = Object.keys(NINONG).map(function (k) { return pill('ninong', k, NINONG[k].name, k === 'barong' ? '#efe7d4' : null, k === 'barong'); }).join('');
+  document.getElementById('pills-concept').innerHTML = Object.keys(CONCEPTS).map(function (k) { return pill('concept', k, CONCEPTS[k].name, null, CONCEPTS[k].rec); }).join('');
+
+  /* ---------- reception scene ---------- */
+  function blooms(cx, cy, rx, ry, colors, green, n, seed) {
+    var sd = seed;
+    function rnd() { sd = (sd * 9301 + 49297) % 233280; return sd / 233280; }
+    var out = '', i, a, d, x, y;
+    for (i = 0; i < n; i++) {
+      a = rnd() * Math.PI * 2; d = Math.sqrt(rnd());
+      x = (cx + Math.cos(a) * rx * d * 1.15).toFixed(1); y = (cy + Math.sin(a) * ry * d * 1.15).toFixed(1);
+      out += '<ellipse cx="' + x + '" cy="' + y + '" rx="9" ry="3.2" transform="rotate(' + Math.round(rnd() * 180) + ' ' + x + ' ' + y + ')" fill="' + green + '"/>';
+    }
+    for (i = 0; i < n; i++) {
+      a = rnd() * Math.PI * 2; d = Math.sqrt(rnd());
+      x = (cx + Math.cos(a) * rx * d).toFixed(1); y = (cy + Math.sin(a) * ry * d).toFixed(1);
+      var r = (4 + rnd() * 4.5).toFixed(1), col = colors[i % colors.length];
+      out += '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + col + '" stroke="rgba(30,40,55,.18)" stroke-width=".6"/>' +
+        '<circle cx="' + x + '" cy="' + y + '" r="' + (r * 0.4).toFixed(1) + '" fill="' + shade(col, -0.1) + '"/>';
+    }
+    return out;
+  }
+
+  function chair(x, c) {
+    if (c.chairStyle === 'cross') {
+      return '<g stroke="' + c.chair + '" stroke-width="3.2" fill="none" stroke-linecap="round"><path d="M' + (x - 14) + ' 186 L' + (x - 13) + ' 126 M' + (x + 14) + ' 186 L' + (x + 13) + ' 126 M' + (x - 13) + ' 128 H' + (x + 13) + ' M' + (x - 13) + ' 130 L' + (x + 13) + ' 160 M' + (x + 13) + ' 130 L' + (x - 13) + ' 160 M' + (x - 13) + ' 160 H' + (x + 13) + '"/></g>';
+    }
+    var s = '';
+    if (c.cushion) s += '<rect x="' + (x - 9) + '" y="128" width="18" height="20" rx="3" fill="' + c.cushion + '" stroke="' + c.chair + '" stroke-width=".8"/>';
+    s += '<g stroke="' + c.chair + '" stroke-width="2.6" fill="none" stroke-linecap="round"><path d="M' + (x - 14) + ' 186 L' + (x - 13) + ' 124 Q' + x + ' 117 ' + (x + 13) + ' 124 L' + (x + 14) + ' 186"/><path d="M' + (x - 13) + ' 152 H' + (x + 13) + ' M' + (x - 13) + ' 164 H' + (x + 13) + '"/>' +
+      (c.cushion ? '' : '<path d="M' + (x - 5) + ' 122 V152 M' + (x + 5) + ' 122 V152"/>') + '</g>';
+    return s;
+  }
+
+  function setting(x, c) {
+    return '<ellipse cx="' + x + '" cy="176" rx="24" ry="5.5" fill="' + c.charger + '"/>' +
+      '<ellipse cx="' + x + '" cy="175" rx="17" ry="3.8" fill="#fbfbf9" stroke="rgba(30,40,55,.2)" stroke-width=".6"/>' +
+      '<path d="M' + (x - 7) + ' 174 L' + x + ' 164 L' + (x + 7) + ' 174 Z" fill="' + c.napkin + '" stroke="rgba(30,40,55,.15)" stroke-width=".5"/>' +
+      '<path d="M' + (x + 21) + ' 157 h8 l-1 8 q-3 3 -6 0 z M' + (x + 25) + ' 166 v7 M' + (x + 22) + ' 173 h6" fill="#e9eef3" fill-opacity=".75" stroke="#aab6c2" stroke-width=".7"/>';
+  }
+
+  function scene(c, name) {
+    var s = '<svg viewBox="0 0 400 250" role="img" aria-label="Illustrated guest table for the ' + name + ' concept">';
+    s += '<rect width="400" height="250" fill="' + c.wall + '"/>';
+    var i, x;
+    if (c.decor === 'swag') {
+      for (i = 0; i < 4; i++) {
+        x = i * 100;
+        s += '<path d="M' + x + ' 0 Q' + (x + 50) + ' 54 ' + (x + 100) + ' 0 Z" fill="' + c.drape + '" fill-opacity=".45"/>' +
+          '<path d="M' + x + ' 0 Q' + (x + 50) + ' 38 ' + (x + 100) + ' 0" fill="none" stroke="' + c.drape + '" stroke-width="2"/>';
+      }
+      for (i = 0; i <= 4; i++) s += '<circle cx="' + (i * 100) + '" cy="5" r="6" fill="' + c.metal + '"/>';
+    }
+    if (c.decor === 'pleats') {
+      for (x = 0; x < 400; x += 22) s += '<rect x="' + x + '" y="0" width="11" height="215" fill="' + c.drape + '"/>';
+    }
+    if (c.decor === 'leaves') s += blooms(200, 6, 230, 12, ['#ffffff', '#8ba3b9', '#ffffff'], c.green, 46, 11);
+    if (c.lights) {
+      s += '<path d="M0 40 Q100 72 200 40 Q300 72 400 40" fill="none" stroke="' + (c.decor === 'pleats' ? '#8a7a55' : '#7a6a4f') + '" stroke-width="1"/>';
+      for (x = 12; x < 400; x += 25) {
+        var t = (x % 200) / 200, y = 40 + 64 * t * (1 - t);
+        s += '<circle cx="' + x + '" cy="' + (y + 3).toFixed(1) + '" r="8" fill="#ffd98a" fill-opacity=".22"/><circle cx="' + x + '" cy="' + (y + 3).toFixed(1) + '" r="2.6" fill="#ffe2a6"/>';
+      }
+    }
+    s += '<rect y="214" width="400" height="36" fill="' + c.floor + '"/>';
+    s += chair(70, c) + chair(330, c);
+    s += '<path d="M86 176 Q200 190 314 176 L328 236 Q200 249 72 236 Z" fill="' + c.cloth + '" stroke="rgba(30,40,55,.12)" stroke-width=".8"/>';
+    s += '<path d="M120 190 L112 238 M160 192 L156 244 M240 192 L244 244 M280 190 L288 238" stroke="rgba(0,0,0,.06)" stroke-width="1.2"/>';
+    s += '<ellipse cx="200" cy="176" rx="114" ry="13" fill="' + shade(c.cloth, c.cloth === '#26374a' ? 0.06 : 0.3) + '" stroke="rgba(30,40,55,.12)" stroke-width=".8"/>';
+    if (c.overlay) s += '<path d="M156 178 Q200 186 244 178 L256 240 Q200 248 144 240 Z" fill="' + c.overlay + '" fill-opacity=".85"/>';
+    s += setting(128, c) + setting(272, c);
+    if (c.tall) {
+      s += '<ellipse cx="200" cy="176" rx="11" ry="3" fill="' + c.metal + '"/><rect x="197.5" y="98" width="5" height="78" fill="' + c.metal + '"/><path d="M184 96 Q200 108 216 96 Z" fill="' + c.metal + '"/>';
+      s += blooms(200, 80, 42, 24, c.flowers, c.green, 34, 3);
+      s += blooms(188, 110, 8, 12, c.flowers, c.green, 5, 21);
+    } else {
+      s += '<path d="M176 166 Q200 184 224 166 Z" fill="' + c.metal + '"/>';
+      s += blooms(200, 158, 40, 12, c.flowers, c.green, 26, 5);
+    }
+    if (c.candles === 'taper') {
+      [164, 236].forEach(function (cx) {
+        s += '<circle cx="' + cx + '" cy="126" r="13" fill="#ffd98a" fill-opacity=".22"/>' +
+          '<rect x="' + (cx - 2) + '" y="130" width="4" height="22" fill="#f6f1e6" stroke="rgba(30,40,55,.15)" stroke-width=".5"/>' +
+          '<path d="M' + (cx - 5) + ' 176 L' + (cx + 5) + ' 176 L' + (cx + 2) + ' 160 L' + (cx + 3) + ' 152 L' + (cx - 3) + ' 152 L' + (cx - 2) + ' 160 Z" fill="' + c.metal + '"/>' +
+          '<ellipse cx="' + cx + '" cy="126" rx="2.2" ry="4.2" fill="#f2b84b"/>';
+      });
+    } else {
+      [150, 250, 172, 228].forEach(function (cx, k) {
+        var y0 = k < 2 ? 172 : 176;
+        s += '<circle cx="' + cx + '" cy="' + (y0 - 4) + '" r="9" fill="#ffd98a" fill-opacity=".25"/>' +
+          '<rect x="' + (cx - 4) + '" y="' + (y0 - 8) + '" width="8" height="9" rx="1.5" fill="#eef2f4" fill-opacity=".8" stroke="#aab6c2" stroke-width=".6"/>' +
+          '<ellipse cx="' + cx + '" cy="' + (y0 - 5) + '" rx="1.3" ry="2.4" fill="#f2b84b"/>';
+      });
+    }
+    return s + '</svg>';
+  }
+
+  /* ---------- render ---------- */
+  function render() {
+    Object.keys(state).forEach(function (g) {
+      var el = document.getElementById(g + '-' + state[g]);
+      if (el) el.checked = true;
+      document.querySelectorAll('input[name="' + g + '"]').forEach(function (inp) {
+        inp.parentNode.classList.toggle('is-on', inp.checked);
+      });
+    });
+
+    var g = GROOM[state.groom], acc = ACC[state.accent], gt = ACC[state.gmtie], sp = SPONSORS[state.sponsors], gu = GUESTS[state.guests];
+    var gw = gu.colors[gu.woman], gm = gu.colors[gu.man];
+    var ninongSub = state.ninong === 'barong' ? 'Barong Tagalog' : sp.suitName;
+    var ninongFig = state.ninong === 'barong'
+      ? man({ kind: 'barong', jacket: '#efe7d4', pants: '#1a1b1e' })
+      : man({ kind: 'suit', jacket: sp.suit, pants: sp.suit, shirt: '#fff', tie: sp.tie, tieStyle: 'long' });
+
+    document.getElementById('lineup').innerHTML =
+      '<div class="row-label">Couple &amp; entourage</div>' +
+      fig('Bridesmaid', 'Dusty blue', woman({ style: 'gown', dress: BM, bouquet: ['#ffffff', '#f3ece2', '#ffffff'] })) +
+      fig('Bride', 'White gown', woman({ style: 'bride', dress: BRIDE, bouquet: ['#ffffff', '#8ba3b9', '#f3ece2', '#ffffff', '#7d98b3'] })) +
+      fig('Groom', g.name + ', ' + acc.name.toLowerCase() + ' bow tie', man({ kind: 'tux', jacket: g.jacket, lapel: g.lapel, pants: g.pants, shirt: '#fff', tie: acc.hex, square: acc.hex, bout: '#8ba3b9' })) +
+      fig('Groomsman', 'Black tux, ' + gt.name.toLowerCase() + ' bow tie', man({ kind: 'tux', jacket: '#17191c', lapel: '#0b0c0e', pants: '#17191c', shirt: '#fff', tie: gt.hex })) +
+      '<div class="row-label">Sponsors &amp; guests</div>' +
+      fig('Ninang', sp.ninangName + ' terno', woman({ style: 'terno', dress: sp.ninang, accent: sp.ninangAccent })) +
+      fig('Ninong', ninongSub, ninongFig) +
+      fig('Guest', gw[0], woman({ style: 'midi', dress: gw[1] })) +
+      fig('Guest', gm[0] + ' suit', man({ kind: 'suit', jacket: gm[1], pants: gm[1], shirt: '#fff', tie: shade(gm[1], -0.35), tieStyle: 'long' }));
+
+    /* guest dress code: warn when the sponsors' color is also in the guest palette */
+    var spWord = sp.ninangName.toLowerCase();
+    var clash = gu.colors.filter(function (c) { return c[0].toLowerCase().indexOf(spWord) !== -1; })[0];
+    var gnote = document.getElementById('guest-note');
+    gnote.hidden = !clash;
+    if (clash) gnote.textContent = 'Heads up: ' + clash[0].toLowerCase() + ' is in this guest palette and is also the ninangs\' color. Pick a different sponsor color or guest palette so the ninangs stand out.';
+    var avoid = [['White, ivory & cream', BRIDE, 'reserved for the bride']];
+    if (!clash) avoid.push([sp.ninangName, sp.ninang, 'worn by our principal sponsors']);
+
+    document.getElementById('dc-card').innerHTML =
+      '<p class="script">Dress Code</p>' +
+      '<p class="code">Formal / Semi-formal</p>' +
+      '<p class="pal">in the colors of our celebration</p>' +
+      '<ul class="dc-swatches">' + gu.colors.map(function (c, i) {
+        var inner = i % 2 === 0
+          ? woman({ style: 'midi', dress: c[1] })
+          : man({ kind: 'shirt', jacket: c[1], pants: '#2a2e35' });
+        return '<li>' + svg(inner, 'Guest in ' + c[0]) + '<span class="dc-chip" style="background:' + c[1] + '"></span><span class="dc-name">' + c[0] + '</span><span class="dc-hex">' + c[1].toUpperCase() + '</span></li>';
+      }).join('') + '</ul>' +
+      '<div class="dc-rules">' +
+        '<div><b>Ladies</b>Long or midi dress, gown, or a modern Filipiniana</div>' +
+        '<div><b>Gentlemen</b>Barong, long-sleeve polo, or a suit with slacks</div>' +
+        '<div><b>Kindly avoid</b><ul class="dc-avoid">' + avoid.map(function (a) {
+          return '<li><span class="dot no" style="background:' + a[1] + '"></span>' + a[0] + ', ' + a[2] + '</li>';
+        }).join('') + '</ul>Jeans, shorts and slippers</div>' +
+      '</div>' +
+      '<p class="dc-tag">#DesTINEdForKHEN</p>';
+
+    dcText = [
+      'Dress code: Formal / Semi-formal',
+      'Our colors: ' + gu.colors.map(function (c) { return c[0]; }).join(', '),
+      'Ladies: long or midi dress, gown, or a modern Filipiniana',
+      'Gentlemen: barong, long-sleeve polo, or a suit with slacks',
+      'Kindly avoid: ' + avoid.map(function (a) { return a[0].toLowerCase() + ' (' + a[2] + ')'; }).join(', ') + ', jeans, shorts and slippers',
+      '#DesTINEdForKHEN'
+    ].join('\n');
+
+    var cp = CONCEPTS[state.concept];
+    document.getElementById('summary').textContent = [
+      'Khen & Tine, February 26, 2027',
+      '',
+      'Bride: white gown',
+      'Groom: ' + g.name.toLowerCase() + ' tux, ' + acc.name.toLowerCase() + ' bow tie and pocket square',
+      'Groomsmen: black tux, ' + gt.name.toLowerCase() + ' bow ties',
+      'Bridesmaids: dusty blue gowns',
+      'Ninangs: ' + sp.ninangName.toLowerCase() + ' (Filipiniana / terno or gown)',
+      'Ninongs: ' + (state.ninong === 'barong' ? 'Barong Tagalog with black trousers' : sp.suitName.toLowerCase()),
+      'Guests: ' + gu.colors.map(function (c) { return c[0].toLowerCase(); }).join(', '),
+      'Reception: ' + cp.name + ' (' + cp.roles.map(function (r) { return r[0].toLowerCase() + ' ' + r[2] + '%'; }).join(', ') + ')'
+    ].join('\n');
+
+    document.getElementById('concept-head').innerHTML = '<h3>' + cp.name + ' <em class="rec">' + cp.tag + '</em></h3><p>' + cp.desc + '</p>';
+    document.getElementById('scene').innerHTML = scene(cp.scene, cp.name);
+    document.getElementById('roles').innerHTML = cp.roles.map(function (r) { return '<i style="width:' + r[2] + '%;background:' + r[1] + '"></i>'; }).join('');
+    document.getElementById('role-legend').innerHTML = cp.roles.map(function (r) {
+      return '<li><span class="dot" style="background:' + r[1] + '"></span><b>' + r[0] + ' <span class="pct">' + r[2] + '%</span></b><span>' + r[3] + '</span></li>';
+    }).join('');
+    document.getElementById('elements').innerHTML = cp.el.map(function (e) {
+      return '<div class="card el"><h4>' + e[0] + '</h4><p>' + e[1] + '</p></div>';
+    }).join('');
+    document.getElementById('concept-link').href = pin(cp.q);
+  }
+
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.type === 'radio' && Object.prototype.hasOwnProperty.call(state, t.name)) {
+      state[t.name] = t.value; save(); render();
+    }
+  });
+
+  var COPY = {
+    picks: { el: 'summary', note: 'copy-note', text: function () { return document.getElementById('summary').textContent; } },
+    dc: { el: 'dc-card', note: 'dc-note', text: function () { return dcText; } }
+  };
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+    var c = COPY[btn.getAttribute('data-copy')], note = document.getElementById(c.note);
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById(c.el));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      note.textContent = 'Text selected. Press Ctrl+C (or long-press) to copy.';
+    }
+    try {
+      navigator.clipboard.writeText(c.text()).then(function () { note.textContent = 'Copied. Paste it into Messenger or Viber.'; }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
