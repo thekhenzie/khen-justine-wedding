@@ -36,6 +36,7 @@
     --warn: #7a4f12;
     --warn-bg: #fbf1de;
     --stop: #a8473a;
+    --ok: #4d6b4f;
     --serif: 'Playfair Display', Georgia, serif;
     --soft: 'Cormorant Garamond', Georgia, serif;
     --script: 'Great Vibes', 'Cormorant Garamond', cursive;
@@ -99,6 +100,8 @@
   .opt-name { font-weight: 500; font-size: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
   .rec { font-style: normal; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); border: 1px solid var(--gold); border-radius: 99px; padding: 1px 8px; font-weight: 500; }
   .opt-desc { display: block; color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .opt-clash { display: block; font-size: 13px; color: var(--warn); margin-top: 4px; }
+  .opt-ok { display: block; font-size: 13px; color: var(--ok); margin-top: 4px; }
   .opt-link { display: inline-block; margin-top: 7px; font-size: 13px; text-decoration: none; border-bottom: 1px solid currentColor; }
 
   .pills { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -179,6 +182,26 @@
   .flow li::before { content: counter(step); display: block; font-family: var(--serif); font-size: 22px; color: var(--gold-dark); line-height: 1; margin-bottom: 6px; }
   .flow li b { display: block; color: var(--text); font-weight: 500; margin-bottom: 2px; }
 
+  /* ---------- inspiration ---------- */
+  .inspo-grid { display: grid; gap: 14px; margin-top: 24px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 760px) { .inspo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .inspo-group h3 { font-family: var(--serif); font-weight: 500; font-size: 19px; margin: 0; }
+  .inspo-group > p { color: var(--muted); font-size: 14px; margin: 4px 0 10px; }
+  .inspo-group ul { list-style: none; margin: 0; padding: 0; display: grid; }
+  .ins { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; border-top: 1px solid var(--line); padding-block: 12px; }
+  .ins-thumb { display: block; width: 96px; height: 96px; border-radius: 8px; overflow: hidden; background: var(--wash); border: 1px solid var(--line); }
+  .ins-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ins-stripes { display: flex; width: 100%; height: 100%; }
+  .ins-stripes i { flex: 1; }
+  .ins-txt { min-width: 0; }
+  .ins-src { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 2px; }
+  .ins-title { font-weight: 500; text-decoration: none; }
+  .ins-title:hover { text-decoration: underline; }
+  .ins-note { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+  .ins-pal { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 8px; }
+  .ins-pal i { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(20, 30, 45, .15); }
+  .ins-pal em { font-style: normal; font-size: 11.5px; color: var(--muted); margin-left: 6px; }
+
   footer { padding-block: 28px 40px; color: var(--muted); font-size: 13px; }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -197,6 +220,8 @@
       <li><span class="dot" style="background:#8ba3b9"></span>Bridesmaids &middot; dusty blue</li>
       <li><span class="dot" style="background:#1d2b45"></span>Groom &middot; midnight navy tux</li>
       <li><span class="dot" style="background:#17191c"></span>Groomsmen &middot; black tux</li>
+      <li><span class="dot" style="background:#dcc8a4"></span>Ninangs &middot; champagne terno</li>
+      <li><span class="dot" style="background:#efe7d4"></span>Ninongs &middot; barong tagalog</li>
     </ul>
   </div>
 </header>
@@ -206,7 +231,7 @@
     <div class="wrap">
       <p class="kicker">Attire</p>
       <h2>The lineup</h2>
-      <p class="intro">Choose an option on the right and the figures update. The bride, groom, bridesmaids and groomsmen are already set. Everything else is a suggestion, and the one marked "Our pick" is where I'd start. "See photos" opens real outfit references on Pinterest.</p>
+      <p class="intro">Choose an option on the right and the figures update. The bride, groom, bridesmaids, groomsmen, ninangs and ninongs are already set. Everything else is a suggestion, and the one marked "Our pick" is where I'd start. "See photos" opens real outfit references on Pinterest.</p>
 
       <div class="studio">
         <div class="stage">
@@ -230,7 +255,7 @@
 
           <div class="panel" id="p-sponsors">
             <h3>Principal sponsors</h3>
-            <p class="hint">Give your ninongs and ninangs their own color so they read as one group in photos, separate from the entourage and the guests. A Filipiniana or terno gown with butterfly sleeves suits the ninangs.</p>
+            <p class="hint">You chose champagne and gold for the ninangs, worn as a Filipiniana or terno with butterfly sleeves, and the barong tagalog for the ninongs. The ninangs will read as one group in photos, separate from the entourage and the guests. The other options stay here for comparison.</p>
             <div class="opts" id="opts-sponsors"></div>
             <p class="sublabel">Ninongs wear</p>
             <div class="pills" id="pills-ninong"></div>
@@ -238,7 +263,7 @@
 
           <div class="panel" id="p-guests">
             <h3>Guests</h3>
-            <p class="hint">A palette with a few colors gives guests room to choose what they already own.</p>
+            <p class="hint">Guests should look different from the wedding party. The new palettes avoid the colors worn by you, Tine, the groomsmen, the bridesmaids and the ninangs. If a guest color comes too close to one of them, a warning appears.</p>
             <p class="guest-note" id="guest-note" hidden></p>
             <div class="opts" id="opts-guests"></div>
             <a class="jump" href="#guest-dress-code">See the guest dress code card &#8595;</a>
@@ -310,10 +335,19 @@
       </div>
     </div>
   </section>
+  <section id="inspiration">
+    <div class="wrap">
+      <p class="kicker">From the web</p>
+      <h2>Inspiration</h2>
+      <p class="intro">Real weddings, guides and ideas to look through together. Each link shows a preview photo from the article where one was available, or a palette of the colors it describes. Links open in a new tab.</p>
+
+      <div class="inspo-grid" id="inspo"></div>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap">Colors look different on every screen. Check fabric and linen swatches in person, ideally under the venue's lighting, before ordering.</div>
+  <div class="wrap">Linked sites are third-party blogs, shops and forums, gathered October 2026. Colors look different on every screen. Check fabric and linen swatches in person, ideally under the venue's lighting, before ordering.</div>
 </footer>
 
 <script>
@@ -346,7 +380,7 @@
   };
 
   var SPONSORS = {
-    champagne: { name: 'Champagne & gold', rec: true, ninang: '#dcc8a4', ninangAccent: '#c6a256', ninangName: 'Champagne',
+    champagne: { name: 'Champagne & gold', chosen: true, ninang: '#dcc8a4', ninangAccent: '#c6a256', ninangName: 'Champagne',
       suit: '#26374a', suitName: 'Navy suit', tie: '#c6a256',
       desc: 'Warm and elegant, and it echoes the gold on your invitation. Easy to tell apart from the bridesmaids\' blue and the bride\'s white, and flattering on most skin tones.',
       q: 'champagne filipiniana terno gown ninang' },
@@ -371,18 +405,23 @@
       colors: [['Dusty blue', '#5c7994'], ['Blue grey', '#7a8b99'], ['Silver grey', '#b7bdc4'], ['Cool beige', '#d6cfc3'], ['Taupe', '#8c7b6c']],
       desc: 'Already on your invitation site, so some guests may have started planning. Keeping it avoids confusion.',
       q: 'dusty blue beige taupe wedding guest attire' },
-    neutrals: { name: 'Neutrals with a touch of blue', woman: 0, man: 4,
-      colors: [['Champagne', '#e3d3b5'], ['Cool beige', '#d6cfc3'], ['Taupe', '#8c7b6c'], ['Blue grey', '#7a8b99'], ['Navy', '#26374a']],
-      desc: 'Keeps most guests out of dusty blue so the bridesmaids stand out. You would need to update the swatches on the invitation site.',
-      q: 'champagne beige taupe wedding guest outfit' },
-    blues: { name: 'Shades of blue', woman: 0, man: 3,
-      colors: [['Powder blue', '#b9cad8'], ['Dusty blue', '#5c7994'], ['Steel', '#7a8b99'], ['Navy', '#26374a'], ['Silver', '#b7bdc4']],
-      desc: 'Everyone in blues makes the motif strong in wide shots. The bridesmaids may blend into the crowd.',
-      q: 'blue wedding guest attire dusty blue navy' },
-    garden: { name: 'Garden tones', woman: 1, man: 4,
-      colors: [['Sage', '#a8b5a0'], ['Dusty blue', '#8ba3b9'], ['Eucalyptus', '#7f9183'], ['Cool beige', '#d6cfc3'], ['Blue grey', '#7a8b99']],
-      desc: 'Pairs with the Garden Romance reception. Greens and blues look natural against the venue\'s wood. You would need to update the invitation site.',
-      q: 'sage green dusty blue wedding guest attire' }
+    /* The palettes below avoid every colour the couple, entourage and sponsors wear */
+    greens: { name: 'Garden greens', woman: 0, man: 2,
+      colors: [['Sage', '#a3b09a'], ['Eucalyptus', '#7f9183'], ['Olive', '#6f7553'], ['Fern', '#6b8f71'], ['Moss', '#8a9a5b']],
+      desc: 'Fresh and calm. Green sits nicely beside dusty blue without matching it, and looks natural against the wood at Water Nymph.',
+      q: 'sage green olive wedding guest attire' },
+    earth: { name: 'Warm earth tones', woman: 0, man: 3,
+      colors: [['Terracotta', '#c07a5a'], ['Rust', '#a65a3c'], ['Mustard', '#c9a03f'], ['Mocha', '#6e5444'], ['Clay', '#b98b6e']],
+      desc: 'Warms up the cool dusty blue and gold, and the entourage wears none of these, so the wedding party stands out clearly in photos.',
+      q: 'terracotta rust mustard wedding guest outfit' },
+    romance: { name: 'Blush & lavender', woman: 0, man: 2,
+      colors: [['Blush', '#e3c4bf'], ['Dusty rose', '#c99a9a'], ['Mauve', '#a7848f'], ['Lavender', '#c2b6d0'], ['Lilac', '#b39bc8']],
+      desc: 'Soft pastels that look romantic next to dusty blue and photograph well in daylight.',
+      q: 'blush lavender dusty rose wedding guest dress' },
+    jewel: { name: 'Jewel tones', woman: 1, man: 3,
+      colors: [['Emerald', '#2f6b55'], ['Burgundy', '#6e2a35'], ['Plum', '#5b3a5e'], ['Deep teal', '#2e6a73'], ['Amber', '#b9772e']],
+      desc: 'Rich and dressy for an evening reception. Deep colors stand out beside the white gown and the dusty blue gowns without competing.',
+      q: 'emerald burgundy plum jewel tone wedding guest attire' }
   };
 
   var CONCEPTS = {
@@ -449,6 +488,8 @@
     Object.keys(DEFAULTS).forEach(function (k) { if (saved[k] && SOURCES[k][saved[k]]) state[k] = saved[k]; });
   } catch (e) {}
   state.groom = 'navy'; /* decided: always open on the groom's choice */
+  state.sponsors = 'champagne'; /* decided: ninangs in champagne terno */
+  state.ninong = 'barong'; /* decided: ninongs in barong tagalog */
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
 
   /* ---------- helpers ---------- */
@@ -459,6 +500,15 @@
     r = Math.round(r + (t - r) * p); g = Math.round(g + (t - g) * p); b = Math.round(b + (t - b) * p);
     return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
   }
+  /* CIE76 colour difference; under ~12 reads as "the same colour" at a glance */
+  function lab(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    var c = [n >> 16, (n >> 8) & 255, n & 255].map(function (v) { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    var x = (c[0] * 0.4124 + c[1] * 0.3576 + c[2] * 0.1805) / 0.95047, y = c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722, z = (c[0] * 0.0193 + c[1] * 0.1192 + c[2] * 0.9505) / 1.08883;
+    function f(t) { return t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116; }
+    return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))];
+  }
+  function deltaE(a, b) { a = lab(a); b = lab(b); return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); }
   function svg(inner, label) {
     return '<svg viewBox="0 0 100 230" role="img" aria-label="' + label + '">' + inner + '</svg>';
   }
@@ -563,11 +613,12 @@
       '<span class="opt-sw">' + swatches.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</span>' +
       '<span class="opt-txt"><span class="opt-name">' + item.name + (item.chosen ? '<em class="rec">Your choice</em>' : item.rec ? '<em class="rec">Our pick</em>' : '') + '</span>' +
       '<span class="opt-desc">' + item.desc + '</span>' +
+      '<span class="opt-clash" id="clash-' + group + '-' + key + '" hidden></span>' +
       '<a class="opt-link" href="' + pin(item.q) + '" target="_blank" rel="noopener">See photos &#8599;</a></span></label>';
   }
   function pill(group, key, name, color, rec) {
     return '<label class="pill' + (color ? '' : ' text-only') + '" for="' + group + '-' + key + '">' + radio(group, key) +
-      (color ? '<span class="dot" style="background:' + color + '"></span>' : '') + name + (rec ? ' <em class="rec">Our pick</em>' : '') + '</label>';
+      (color ? '<span class="dot" style="background:' + color + '"></span>' : '') + name + (rec ? ' <em class="rec">' + (rec === true ? 'Our pick' : rec) + '</em>' : '') + '</label>';
   }
 
   document.getElementById('opts-groom').innerHTML = Object.keys(GROOM).map(function (k) {
@@ -581,7 +632,7 @@
   }).join('');
   document.getElementById('pills-accent').innerHTML = Object.keys(ACC).map(function (k) { return pill('accent', k, ACC[k].name, ACC[k].hex); }).join('');
   document.getElementById('pills-gmtie').innerHTML = Object.keys(ACC).map(function (k) { return pill('gmtie', k, ACC[k].name, ACC[k].hex, k === 'blue'); }).join('');
-  document.getElementById('pills-ninong').innerHTML = Object.keys(NINONG).map(function (k) { return pill('ninong', k, NINONG[k].name, k === 'barong' ? '#efe7d4' : null, k === 'barong'); }).join('');
+  document.getElementById('pills-ninong').innerHTML = Object.keys(NINONG).map(function (k) { return pill('ninong', k, NINONG[k].name, k === 'barong' ? '#efe7d4' : null, k === 'barong' ? 'Your choice' : false); }).join('');
   document.getElementById('pills-concept').innerHTML = Object.keys(CONCEPTS).map(function (k) { return pill('concept', k, CONCEPTS[k].name, null, CONCEPTS[k].rec); }).join('');
 
   /* ---------- reception scene ---------- */
@@ -678,6 +729,78 @@
     return s + '</svg>';
   }
 
+  /* ---------- inspiration links ----------
+     img: small preview of the article's own photo (credited and linked back).
+     pal: 'photo' = colors sampled from that photo; 'article' = colors the article describes. */
+  var INSPO = [
+    { title: 'Navy groom, dusty blue bridesmaids', intro: 'How the groom\'s navy, the groomsmen and the bridesmaids\' blue work together.', items: [
+      { src: 'Friar Tux', url: 'https://www.friartux.com/blog/blog1985.html', title: 'Dusty blue & ivory real wedding',
+        note: 'Bridesmaids in dusty blue, groomsmen in light suits with dusty blue bow ties.', img: 'assets/inspo/friartux.jpg', alt: 'Wedding party outdoors: bridesmaids in dusty blue gowns, groomsmen in light suits',
+        pal: ['#8fa9c6', '#b7c7d6', '#f4f2ee', '#c0b5a8', '#6f7a6e'], from: 'photo' },
+      { src: 'Revelry', url: 'https://shoprevelry.com/blogs/wedding-inspiration/groomsmen-suit-colors-that-match-bridesmaid-dresses', title: 'Suit colors that match bridesmaid dresses',
+        note: 'Calls navy with dusty blue one of the strongest pairings: two depths of the same blue.',
+        pal: ['#1d2b45', '#5c7994', '#8ba3b9', '#b9cad8', '#f4f1ea'], from: 'article' },
+      { src: 'WeddingWire forum', url: 'https://www.weddingwire.com/wedding-forums/do-navy-suits-go-with-dusty-blue-bridesmaid-dresses/0283eef297f7d62e.html', title: 'Do navy suits go with dusty blue dresses?',
+        note: 'Couples\' tips on linking the two sides with light blue ties and boutonniere ribbons.',
+        pal: ['#1d2b45', '#8ba3b9', '#b9cad8', '#f7f6f2', '#c6a256'], from: 'article' }
+    ] },
+    { title: 'Ninangs in Filipiniana & terno', intro: 'Looks for the champagne & gold ninangs and the barong ninongs.', items: [
+      { src: 'Bride & Breakfast', url: 'https://brideandbreakfast.ph/2022/05/18/kultura-modern-filipinana-wedding-collection/', title: 'Kultura modern Filipiniana collection',
+        note: 'Champagne and ivory ternos, some with removable butterfly sleeves: full sleeves for church, lighter for the reception.', img: 'assets/inspo/kultura.jpg', alt: 'Model in an ivory terno with pearl necklace, and a champagne Filipiniana gown with butterfly sleeves',
+        pal: ['#efe6d6', '#d8c3a1', '#c9a35a', '#8a7258', '#4c3b26'], from: 'photo' },
+      { src: 'Bride & Breakfast', url: 'https://brideandbreakfast.ph/2019/03/06/elements-of-a-filipiniana-wedding', title: 'Elements of a Filipiniana wedding',
+        note: 'A Filipiniana gown, a long wooden table and an entourage in champagne: gold tones, wood, capiz and abaca.', img: 'assets/inspo/bnbelements.jpg', alt: 'Bride in a Filipiniana gown, a long wooden reception table, and an entourage in champagne dresses',
+        pal: ['#f1ece4', '#d9c6aa', '#b38b55', '#6b4a2e', '#8e9a7e'], from: 'photo' },
+      { src: 'Barong Warehouse', url: 'https://barongwarehouse.com/blogs/barong-bridges/how-to-style-a-modern-filipiniana-dress-4-elegant-tips', title: 'How to style a modern Filipiniana dress',
+        note: 'Lace bolero sleeves and styling tips, including skipping bulky shawls that flatten the sleeves.', img: 'assets/inspo/barongwh.jpg', alt: 'Woman in an ecru lace Filipiniana bolero with butterfly sleeves',
+        pal: ['#e9e4d8', '#cdbfa9', '#a89888', '#580814', '#1a1a1a'], from: 'photo' },
+      { src: 'Filipino Wedding', url: 'https://www.filipinowedding.com/blogs/wedding-blog/what-to-wear-to-a-filipino-wedding-tips-to-crack-the-dress-code', title: 'What to wear to a Filipino wedding',
+        note: 'Barong for the men; terno, kimona or a Filipiniana bolero for the women; piña and jusi fabrics.',
+        pal: ['#ece3cf', '#d8c6a6', '#f7f4ec', '#b89a6a', '#c6a256'], from: 'article' }
+    ] },
+    { title: 'Reception tables & decor', intro: 'Ideas for the guest tables, florals and lighting.', items: [
+      { src: 'The Garter Girl', url: 'https://thegartergirl.com/blogs/the-garter-girls-blog/dusty-blue-wedding-ideas', title: 'Dusty blue wedding ideas',
+        note: 'Dusty blue velvet, silk ribbon, white blooms and candlelight, plus matching place cards.', img: 'assets/inspo/gartergirl.jpg', alt: 'Dusty blue velvet ring boxes with silk ribbon, white flowers and lavender on linen',
+        pal: ['#7e93ab', '#5d6f8a', '#b9b8b6', '#f2f1ea', '#6c5aa0'], from: 'photo' },
+      { src: 'Azazie', url: 'https://www.azazie.com/blog/the-ultimate-guide-to-styling-dusty-blue-wedding-colors/', title: 'Styling dusty blue wedding colors',
+        note: 'Dusty blue velvet linens, gold-rimmed glassware, white stoneware and silver-glass candle holders.',
+        pal: ['#7f98ae', '#c6a256', '#f7f5f0', '#b9bcc0', '#f0d9a8'], from: 'article' },
+      { src: 'Wed Society', url: 'https://houston.wedsociety.com/article/dusty-blue-wedding-smith-house-photo/', title: 'Dusty blue styled shoot',
+        note: 'Gold chargers, eucalyptus and calligraphy menus.',
+        pal: ['#8ba3b9', '#c6a256', '#7f9183', '#f7f5f0', '#2c3540'], from: 'article' },
+      { src: 'WeddingWire forum', url: 'https://www.weddingwire.com/wedding-forums/dusty-blue-table-decor/02ab77d1a83951b5.html', title: 'Dusty blue table decor',
+        note: 'Couples\' real setups: greenery garlands, candles, DIY dyed runners.',
+        pal: ['#8ba3b9', '#7f9183', '#f4f1ea', '#f0d9a8', '#c6a256'], from: 'article' }
+    ] },
+    { title: 'Dusty blue palettes', intro: 'Which colors go with dusty blue, and real weddings that use it.', items: [
+      { src: 'Paperlust', url: 'https://paperlust.co/blog/dusty-blue-wedding/', title: 'Dusty blue wedding: palette, decor & examples',
+        note: 'Pairings with ivory, silver grey, blush and sage. The bouquet adds peach roses to blue hydrangea.', img: 'assets/inspo/paperlust.jpg', alt: 'Bouquet of blue hydrangea, peach roses and cream flowers on a wooden table',
+        pal: ['#7b98bd', '#eeb37f', '#f3e7cf', '#9fae8f', '#6e5b3f'], from: 'photo' },
+      { src: 'Bride & Breakfast', url: 'https://brideandbreakfast.ph/2022/10/29/filipiniana-wedding-in-bohol', title: 'Filipiniana wedding in Bohol',
+        note: 'Powder blue and champagne entourage at an old stone church, close to your blue and champagne mix.', img: 'assets/inspo/bohol.jpg', alt: 'Filipiniana wedding in Bohol: entourage in light blue and champagne, couple outside a stone church',
+        pal: ['#b9d0dd', '#d9c3a3', '#f4f3f0', '#9d9386', '#3e2a1d'], from: 'photo' },
+      { src: 'Pinterest', url: 'https://www.pinterest.com/search/pins/?q=dusty%20blue%20and%20gold%20wedding', title: 'Dusty blue & gold weddings',
+        note: 'A photo board to scroll through together.',
+        pal: ['#5c7994', '#8ba3b9', '#c6a256', '#dcc07f', '#f4f1ea'], from: 'invitation' }
+    ] }
+  ];
+  function renderInspo() {
+    var FROM = { photo: 'Colors from the photo', article: 'Colors the article describes', invitation: 'Your invitation colors' };
+    document.getElementById('inspo').innerHTML = INSPO.map(function (g) {
+      return '<div class="card inspo-group"><h3>' + g.title + '</h3><p>' + g.intro + '</p><ul>' + g.items.map(function (it) {
+        var thumb = it.img
+          ? '<img src="' + it.img + '" alt="' + it.alt + '" loading="lazy">'
+          : '<span class="ins-stripes" aria-hidden="true">' + it.pal.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</span>';
+        return '<li class="ins"><a class="ins-thumb" href="' + it.url + '" target="_blank" rel="noopener" tabindex="-1">' + thumb + '</a>' +
+          '<div class="ins-txt"><span class="ins-src">' + it.src + '</span>' +
+          '<a class="ins-title" href="' + it.url + '" target="_blank" rel="noopener">' + it.title.replace(/&/g, '&amp;') + ' &#8599;</a>' +
+          '<span class="ins-note">' + it.note + '</span>' +
+          '<div class="ins-pal">' + it.pal.map(function (c) { return '<i style="background:' + c + '" title="' + c + '"></i>'; }).join('') + '<em>' + FROM[it.from] + '</em></div>' +
+          '</div></li>';
+      }).join('') + '</ul></div>';
+    }).join('');
+  }
+
   /* ---------- render ---------- */
   function render() {
     Object.keys(state).forEach(function (g) {
@@ -707,14 +830,40 @@
       fig('Guest', gw[0], woman({ style: 'midi', dress: gw[1] })) +
       fig('Guest', gm[0] + ' suit', man({ kind: 'suit', jacket: gm[1], pants: gm[1], shirt: '#fff', tie: shade(gm[1], -0.35), tieStyle: 'long' }));
 
-    /* guest dress code: warn when the sponsors' color is also in the guest palette */
-    var spWord = sp.ninangName.toLowerCase();
-    var clash = gu.colors.filter(function (c) { return c[0].toLowerCase().indexOf(spWord) !== -1; })[0];
+    /* guest colors must stay clear of what the wedding party wears */
+    var reserved = [
+      { who: 'the bride', name: 'White, ivory & cream', hex: BRIDE },
+      { who: 'the groom', name: g.name, hex: g.jacket },
+      { who: 'the groomsmen', name: 'Black', hex: '#17191c' },
+      { who: 'the bridesmaids', name: 'Dusty blue', hex: BM },
+      { who: 'the ninangs', name: sp.ninangName, hex: sp.ninang }
+    ];
+    if (state.ninong === 'suit') reserved.push({ who: 'the ninongs', name: sp.suitName.replace(/ suit$/, ''), hex: sp.suit });
+    function clashesOf(pal) {
+      var out = [];
+      pal.colors.forEach(function (c) {
+        reserved.forEach(function (r) {
+          var sameName = c[0].toLowerCase() === r.name.toLowerCase();
+          if (sameName || deltaE(c[1], r.hex) < 12) out.push({ guest: c[0], r: r, sameName: sameName });
+        });
+      });
+      return out;
+    }
+    Object.keys(GUESTS).forEach(function (k) {
+      var el = document.getElementById('clash-guests-' + k), cl = clashesOf(GUESTS[k]);
+      el.hidden = false;
+      el.className = cl.length ? 'opt-clash' : 'opt-ok';
+      el.textContent = cl.length
+        ? cl.map(function (x) { return x.guest + (x.sameName ? ' is also worn by ' : ' is close to the color of ') + x.r.who; }).join('. ') + '.'
+        : 'Different from everyone in the wedding party.';
+    });
+    var clash = clashesOf(gu);
     var gnote = document.getElementById('guest-note');
-    gnote.hidden = !clash;
-    if (clash) gnote.textContent = 'Heads up: ' + clash[0].toLowerCase() + ' is in this guest palette and is also the ninangs\' color. Pick a different sponsor color or guest palette so the ninangs stand out.';
-    var avoid = [['White, ivory & cream', BRIDE, 'reserved for the bride']];
-    if (!clash) avoid.push([sp.ninangName, sp.ninang, 'worn by our principal sponsors']);
+    gnote.hidden = !clash.length;
+    if (clash.length) gnote.textContent = 'Heads up: in this palette, ' + clash.map(function (x) { return x.guest.toLowerCase() + (x.sameName ? ' is also worn by ' : ' looks close to ') + x.r.who; }).join(', and ') + '.';
+    var avoid = reserved.filter(function (r) {
+      return !clash.some(function (x) { return x.r === r; });
+    }).map(function (r) { return [r.name, r.hex, 'for ' + r.who]; });
 
     document.getElementById('dc-card').innerHTML =
       '<p class="script">Dress Code</p>' +
@@ -752,7 +901,7 @@
       'Groom: ' + g.name.toLowerCase() + ' tux, ' + acc.name.toLowerCase() + ' bow tie and pocket square',
       'Groomsmen: black tux, ' + gt.name.toLowerCase() + ' bow ties',
       'Bridesmaids: dusty blue gowns',
-      'Ninangs: ' + sp.ninangName.toLowerCase() + ' (Filipiniana / terno or gown)',
+      'Ninangs: ' + sp.ninangName.toLowerCase() + ' Filipiniana / terno',
       'Ninongs: ' + (state.ninong === 'barong' ? 'Barong Tagalog with black trousers' : sp.suitName.toLowerCase()),
       'Guests: ' + gu.colors.map(function (c) { return c[0].toLowerCase(); }).join(', '),
       'Reception: ' + cp.name + ' (' + cp.roles.map(function (r) { return r[0].toLowerCase() + ' ' + r[2] + '%'; }).join(', ') + ')'
@@ -795,6 +944,7 @@
     } catch (err) { fallback(); }
   });
 
+  renderInspo();
   render();
 })();
 </script>
